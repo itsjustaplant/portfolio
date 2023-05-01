@@ -1,0 +1,38 @@
+---
+import Link from './Link.astro';
+
+export interface Props {
+  text: string;
+  link?: string;
+}
+
+const { text, link} = Astro.props;
+---
+
+<div class="tag">
+  {link ? (
+    <Link link={link} text={text} />
+  ) : (
+    <span>
+      {text}
+    </span>
+  )}
+</div>
+
+<style>
+  .tag {
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 6px 8px;
+    color: rgb(var(--white));
+    background-color: var(--blackish);
+    transition: 0.3s all ease-in-out;
+  }
+
+  .tag:hover {
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
+    box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
+  }
+</style>

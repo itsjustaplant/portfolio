@@ -1,0 +1,22 @@
+---
+import SectionHeader from "../components/SectionHeader.astro";
+import Paragraph from "../components/Paragraph.astro";
+import Link from "../components/Link.astro";
+---
+<div class="wrapper">
+  <SectionHeader title='About' />
+  <div>
+    <Paragraph text='Makes lo-fi songs and loves synthesizers also frontend developer' link="https://www.jotform.com" linkText="@Jotform"/>
+  </div>
+</div>
+
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .wrapper {
+    display: block;
+  }
+</style>

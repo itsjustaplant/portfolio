@@ -1,0 +1,28 @@
+---
+import SubHeader from "./SubHeader.astro";
+import Link from "./Link.astro";
+import Paragraph from "./Paragraph.astro";
+
+interface Props {
+  date: string;
+  text: string;
+  link: string;
+  desc: string;
+};
+
+const { date, text, link, desc } = Astro.props; 
+---
+
+<div class="wrapper">
+  <SubHeader text={date} />
+  <div>
+    <Link text={text} link={link}/>
+    <Paragraph text={desc}/>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    display: flex;
+  }
+</style>

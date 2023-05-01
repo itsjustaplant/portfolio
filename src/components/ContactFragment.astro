@@ -1,0 +1,17 @@
+---
+import SubHeader from "./SubHeader.astro";
+import Link from "./Link.astro";
+
+interface Props {
+  website: string;
+  text: string;
+  link: string;
+}
+
+const {website, text, link} = Astro.props;
+---
+
+<div>
+  <SubHeader text={website} />
+  <Link link={link} text={text} />
+</div>

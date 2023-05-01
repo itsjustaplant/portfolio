@@ -1,0 +1,40 @@
+---
+import SectionHeader from "../components/SectionHeader.astro";
+import DateFragment from "../components/DateFragment.astro";
+
+const ExperinceData = [
+  {
+    date: "2020 — 2021",
+    text: "Web Development Intern",
+    link: "https://www.jotform.com",
+    description: "Worked on a internal bug and Node Client form Jotform API"
+  },
+  {
+    date: "2021 — 2022",
+    text: "Technical Support Engineer at Jotform",
+    link: "https://www.jotform.com",
+    description: "Worked on Approvals project. Developed features, fixed bugs attended team meatings to plan development schedule"
+  },
+  {
+    date: "2022 — Now",
+    text: "Frontend Developer",
+    link: "https://www.jotform.com",
+    description: "Developed internal tools for SEO and Translation teams. Developed features for growth"
+  },
+]
+---
+
+<div class="wrapper">
+  <SectionHeader title="Work Experience" />
+  <div class="experience-container">
+    {ExperinceData.map(exp => <DateFragment date={exp.date} text={exp.text} link={exp.link} desc={exp.description} />)}
+  </div>
+</div>
+
+<style>
+  .experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+</style>

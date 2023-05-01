@@ -1,0 +1,46 @@
+---
+import SectionHeader from "../components/SectionHeader.astro";
+import Tag from "../components/Tag.astro";
+
+const Skills = [
+  {
+    text: 'Javascript'
+  },
+  {
+    text: 'React'
+  },
+  {
+    text: 'Node'
+  },
+  {
+    text: 'Python'
+  },
+  {
+    text: 'C'
+  },
+  {
+    text: 'Full Stack Development'
+  },
+  {
+    text: 'remix.run'
+  },
+  {
+    text: 'Astro'
+  }
+];
+---
+
+<div>
+  <SectionHeader title="Skills" />
+  <div class="tags">
+    {Skills.map(skill => <Tag text={skill.text} />)}
+  </div>
+</div>
+
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+</style>

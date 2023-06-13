@@ -10,8 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.3.0",
-    "jspdf": "^2.5.1",
-    "querystring": "^0.2.1"
+    "astro": "^2.3.3",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3"
   }
 }

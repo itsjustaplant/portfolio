@@ -1,48 +1,206 @@
 ---
-import Confetti from "../icons/Confetti.astro";
 import Spotify from "../icons/Spotify.astro";
-import ArrowDown from "../icons/ArrowDown.astro";
+import CircleNotch from "../icons/CircleNotch.astro";
 
 export interface Props {
-  type: string,
-  id: string
+  type: string;
+  id: string;
 }
 
 interface IconsType {
-  [key: string]: any
+  [key: string]: any;
 }
 
-const { type = 'confetti', id} = Astro.props;
+const { type = "confetti", id } = Astro.props;
 
 const Icons: IconsType = {
-  spotify: Spotify,
-  confetti: Confetti,
-  download: ArrowDown
+  spotify: Spotify
 };
 
 const Icon = Icons[type];
 ---
-<button id={id}>
-  <Icon />
+
+<script>
+  const spotifyButton = document.getElementById("spotify");
+  const textContainer = document.getElementById("container-text");
+  const container = document.getElementById("song-container");
+  const containerTitle = document.getElementById("text-title");
+  const containerArtist = document.getElementById("text-artist");
+
+  let toggle = true;
+
+  if (spotifyButton && textContainer) {
+    spotifyButton.addEventListener("click", () => {
+      if (toggle) {
+        spotifyButton.style.maxWidth = "240px";
+        spotifyButton.style.width = "240px";
+        textContainer.style.opacity = "1";
+      } else {
+        spotifyButton.style.maxWidth = "64px";
+        spotifyButton.style.width = "64px";
+        textContainer.style.opacity = "0";
+      }
+
+      toggle = !toggle;
+    });
+  }
+
+  const fetchSong = async () => {
+    try {
+      const res = await fetch("https://justaplant.dev/capstone/api/song");
+      const parsedResponse = await res.json();
+      const { artist, song, image } = parsedResponse;
+
+      if (spotifyButton) {
+        spotifyButton.classList.remove("loading");
+      }
+
+      if (container) {
+        container.style.display = "flex";
+      }
+
+      document.getElementById("artwork")?.setAttribute("src", image);
+
+      if (containerTitle) {
+        containerTitle.innerText = song;
+      }
+
+      if (containerArtist) {
+        containerArtist.innerText = artist;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  fetchSong();
+
+  setInterval(async () => {fetchSong()}, 15000);
+</script>
+
+<button class="loading" id={id}>
+  <CircleNotch className="loader" idName="loaderIcon" />
+  <div id="song-container">
+    <div id="container-image">
+      <img id="artwork" src="" />
+    </div>
+    <div id="container-text">
+      <span id="text-title"></span>
+      <span id="text-artist"></span>
+    </div>
+  </div>
 </button>
 
 <style>
   button {
+    padding: 0;
     position: fixed;
     bottom: 10px;
     right: 10px;
     display: flex;
     border-radius: 8px;
-    padding: 8px;
     color: rgb(var(--white));
     border: none;
     background-color: var(--blackish);
     transition: 0.3s all ease-in-out;
+    min-width: 64px;
+    min-height: 64px;
+    max-height: 64px;
+    max-width: 64px;
   }
+
+  .loader {
+    display: none;
+    -webkit-animation: rotating 2s linear infinite;
+    -moz-animation: rotating 2s linear infinite;
+    -ms-animation: rotating 2s linear infinite;
+    -o-animation: rotating 2s linear infinite;
+    animation: rotating 1s linear infinite;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+  }
+
+  button.success {
+    max-width: 240px;
+  }
+
+  button.loading .icon {
+    display: none;
+  }
+
+  button.loading .loader {
+    display: block;
+  }
+
   button:hover {
-    -webkit-box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
-    -moz-box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
-    box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
-    content: 'hover'
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(170, 170, 170, 0.6);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(170, 170, 170, 0.6);
+    box-shadow: 0px 0px 1px 1px rgba(170, 170, 170, 0.6);
+    content: "hover";
+  }
+
+  #song-container {
+    position: relative;
+    display: none;
+    gap: 8px;
+    max-height: 64px;
+    height: 64px;
+  }
+
+  #container-image {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 56px;
+    height: 56px;
+  }
+
+  img {
+    width: 56px;
+    height: 56px;
+  }
+
+  #container-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0;
+    margin-left: 72px;
+    margin-top: 16px;
+  }
+
+  span {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  #text-title {
+    font-size: 14px;
+    color: rgb(var(--white));
+  }
+
+  #text-artist {
+    font-size: 12px;
+    color: rgb(var(--grey));
+  }
+
+  @keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
   }
 </style>

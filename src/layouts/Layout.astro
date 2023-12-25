@@ -13,6 +13,9 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/plant.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Portfolio website of Alperen Sahin"/>
+		<meta http-equiv="Content-Security-Policy" content="script-src https://www.justaplant.dev http://localhost:3002/"/>
+		<meta http-equiv="Content-Security-Policy" content="object-src 'none'"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -28,7 +31,7 @@ const { title } = Astro.props;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
 		--white: 255, 255, 255;
 		--grey: 170, 170, 170;
-		--dark-grey: 119, 119, 119;
+		--dark-grey: 153, 153, 153;
 		--blackish: #333333;
 	}
 	html {

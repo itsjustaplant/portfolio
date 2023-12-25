@@ -26,6 +26,7 @@ const Icon = Icons[type];
   const container = document.getElementById("song-container");
   const containerTitle = document.getElementById("text-title");
   const containerArtist = document.getElementById("text-artist");
+  const containerImage = document.getElementById("artwork");
 
   let toggle = true;
 
@@ -59,7 +60,8 @@ const Icon = Icons[type];
         container.style.display = "flex";
       }
 
-      document.getElementById("artwork")?.setAttribute("src", image);
+      containerImage?.setAttribute("src", image);
+      containerImage?.setAttribute("alt", `Cover art of ${song} by ${artist}`)
 
       if (containerTitle) {
         containerTitle.innerText = song;
@@ -82,7 +84,7 @@ const Icon = Icons[type];
   <CircleNotch className="loader" idName="loaderIcon" />
   <div id="song-container">
     <div id="container-image">
-      <img id="artwork" src="" />
+      <img id="artwork" src="" alt={}/>
     </div>
     <div id="container-text">
       <span id="text-title"></span>

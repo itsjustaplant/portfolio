@@ -21,7 +21,8 @@ module.exports = {
         // override/add rules settings here, such as:
         "astro/no-set-html-directive": "error",
         "eol-last": ["error", "always"],
-        "no-trailing-spaces": ["error"]
+        "no-trailing-spaces": ["error"],
+        "indent": ["error", "tab"]
       },
     },
     // ...

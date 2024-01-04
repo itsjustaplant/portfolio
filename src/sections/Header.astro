@@ -1,0 +1,65 @@
+---
+import SectionWrapper from "../components/SectionWrapper.astro";
+import Glare from "../icons/Glare.astro";
+---
+
+<SectionWrapper>
+	<div>
+		<h1>justaplant</h1>
+		{false && (
+			<a href="/blog" class="blog-cta">
+				<span>Blog</span>
+				<Glare className="glare-icon"/>
+			</a>
+		)}
+	</div>
+	<h2>Alperen Sahin Frontend Developer from Ankara</h2>
+</SectionWrapper>
+
+<style>
+	div {
+		display: flex;
+		align-items: center;
+	}
+  h1 {
+		font-size: 20px;
+		color: white;
+		font-weight: 500;
+	}
+	h2 {
+		font-size: 14px;
+		color: rgb(var(--grey));
+		font-weight: 500;
+	}
+	.blog-cta {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 6px;
+		cursor: pointer;
+		margin-left: auto;
+		border: none;
+		font-size: 14px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: rgb(var(--white));
+    transition: 0.3s all ease-in-out;
+		box-shadow: 0px 0px 34px -12px rgba(239,148,108,1);
+		background: linear-gradient(273deg, #EF946C, #70877F);
+		text-decoration: none;
+
+		span {
+			line-height: 14px;
+		}
+	}
+
+	.blog-cta:hover {
+		box-shadow: 0px 0px 30px -9px rgba(239,148,108,1);
+	}
+
+	.glare-icon {
+		fill: rgb(var(--white));
+		width: 14px;
+		height: 14px;
+	}
+</style>

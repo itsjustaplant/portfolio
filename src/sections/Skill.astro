@@ -1,44 +1,43 @@
 ---
 import SectionHeader from "../components/SectionHeader.astro";
 import Tag from "../components/Tag.astro";
+import SectionWrapper from "../components/SectionWrapper.astro";
 
 const Skills = [
-  {
-    text: 'Typescript'
-  },
-  {
-    text: 'React'
-  },
-  {
-    text: 'Next.js'
-  },
-  {
-    text: 'Stencil'
-  },
-  {
-    text: 'Node'
-  },
-  {
-    text: 'Full Stack Development'
-  },
-  {
-    text: 'Rust'
-  },
-  {
-    text: 'Astro ❤️'
-  },
-  {
-    text: 'Python'
-  },
+	{
+		text: 'Typescript'
+	},
+	{
+		text: 'React'
+	},
+	{
+		text: 'Next.js'
+	},
+	{
+		text: 'Stencil'
+	},
+	{
+		text: 'Node'
+	},
+	{
+		text: 'Full Stack Development'
+	},
+	{
+		text: 'Rust'
+	},
+	{
+		text: 'Astro ❤️'
+	},
+	{
+		text: 'Python'
+	},
 ];
 ---
-
-<div>
-  <SectionHeader title="Skills" />
-  <div class="tags">
-    {Skills.map(skill => <Tag text={skill.text} />)}
-  </div>
-</div>
+<SectionWrapper title="Skills">
+	<div class="tags">
+		{Skills.map(skill => <Tag text={skill.text} />)}
+	</div>
+</SectionWrapper>
 
 <style>
   .tags {

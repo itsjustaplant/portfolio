@@ -1,21 +1,7 @@
 ---
-import SectionHeader from "../components/SectionHeader.astro";
 import Paragraph from "../components/Paragraph.astro";
+import SectionWrapper from "../components/SectionWrapper.astro";
 ---
-<div class="wrapper">
-  <SectionHeader title='About' />
-  <div>
-    <Paragraph text='Makes lo-fi songs and loves synthesizers and drums also frontend developer' link="https://www.accenture.com/gb-en" linkText="@Accenture"/>
-  </div>
-</div>
-
-<style>
-  div {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .wrapper {
-    display: block;
-  }
-</style>
+<SectionWrapper title="About">
+	<Paragraph text='Makes lo-fi songs and loves synthesizers and drums also frontend developer' link="https://www.accenture.com/gb-en" linkText="@Accenture"/>
+</SectionWrapper>

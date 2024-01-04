@@ -1,0 +1,14 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+
+interface Props {
+  title?: string
+}
+
+const {title} = Astro.props;
+---
+
+<div class="wrapper">
+	{title && <SectionHeader title={title} />}
+	<slot />
+</div>

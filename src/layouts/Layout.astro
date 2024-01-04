@@ -16,7 +16,7 @@ const { title } = Astro.props;
 		<meta name="description" content="Portfolio website of Alperen Sahin"/>
 		<meta http-equiv="Content-Security-Policy" content="font-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com">
 		<meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline' https://fonts.googleapis.com">
-		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://www.justaplant.dev"/>
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://www.justaplant.dev https://cdnjs.cloudflare.com/" />
 		<meta http-equiv="Content-Security-Policy" content="object-src 'none'"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,12 +29,11 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
 		--white: 255, 255, 255;
 		--grey: 170, 170, 170;
 		--dark-grey: 153, 153, 153;
 		--blackish: #333333;
+		--eerie-black: #212121;
 	}
 	html {
 		font-family: system-ui, sans-serif;
@@ -44,6 +43,6 @@ const { title } = Astro.props;
 		height: 100vh;
 		padding: 0;
 		margin: 0;
-		background-color: #212121  ;
+		background-color: var(--eerie-black)  ;
 	}
 </style>

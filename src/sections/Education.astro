@@ -1,29 +1,27 @@
 ---
-import SectionHeader from "../components/SectionHeader.astro";
 import DateFragment from "../components/DateFragment.astro";
+import SectionWrapper from "../components/SectionWrapper.astro";
 
 const EducationData = [
-  {
-    date: "2018 — 2023",
-    text: "Hacettepe University - Electrical and Electronics Engineering",
-    link: "http://www.ee.hacettepe.edu.tr/",
-    description: "Learned circuit theory, C, VHDL, signal processing, integrated circuit design and embedded system design."
-  },
-  {
-    date: "2016 — 2017",
-    text: "Grand Valley State University",
-    link: "https://www.gvsu.edu/",
-    description: "Attended to Intensive English Program for Academic Purposes offered by ELS Language Center at Grand Rapids, MI."
-  }
+	{
+		date: "2018 — 2023",
+		text: "Hacettepe University - Electrical and Electronics Engineering",
+		link: "http://www.ee.hacettepe.edu.tr/",
+		description: "Learned circuit theory, C, VHDL, signal processing, integrated circuit design and embedded system design."
+	},
+	{
+		date: "2016 — 2017",
+		text: "Grand Valley State University",
+		link: "https://www.gvsu.edu/",
+		description: "Attended to Intensive English Program for Academic Purposes offered by ELS Language Center at Grand Rapids, MI."
+	}
 ]
 ---
-
-<div>
-  <SectionHeader title="Education" />
-  <div class="education-container">
-    {EducationData.map(edu => <DateFragment date={edu.date} text={edu.text} link={edu.link} desc={edu.description} />)}
-  </div>
-</div>
+<SectionWrapper title="Education">
+	<div class="education-container">
+		{EducationData.map(edu => <DateFragment date={edu.date} text={edu.text} link={edu.link} desc={edu.description} />)}
+	</div>
+</SectionWrapper>
 
 <style>
   .education-container {

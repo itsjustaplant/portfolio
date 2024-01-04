@@ -10,13 +10,13 @@ const { text, link} = Astro.props;
 ---
 
 <div class="tag">
-  {link ? (
-    <Link link={link} text={text} />
-  ) : (
-    <span>
-      {text}
-    </span>
-  )}
+	{link ? (
+		<Link link={link} text={text} />
+	) : (
+		<span>
+			{text}
+		</span>
+	)}
 </div>
 
 <style>

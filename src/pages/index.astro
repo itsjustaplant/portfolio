@@ -1,27 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import Header from '../sections/Header.astro';
 import About from '../sections/About.astro';
 import Experience from '../sections/Experience.astro';
 import Education from '../sections/Education.astro';
 import Contact from '../sections/Contact.astro';
 import Skill from '../sections/Skill.astro';
 
-import Button from '../components/Button.astro';
+import SpotifyPlayer from '../components/SpotifyPlayer.astro';
 ---
 <Layout title="justaplant">
 	<main id='main'>
-		<h1>
-			justaplant
-		</h1>
-		<h2>Alperen Sahin Frontend Developer from Ankara</h2>
+		<Header />
 		<About />
 		<Experience />
 		<Education />
 		<Skill />
 		<Contact />
 	</main>
-	<Button type='spotify' id='spotify' />
+	<SpotifyPlayer />
 </Layout>
 
 <style>
@@ -39,21 +37,5 @@ import Button from '../components/Button.astro';
 	main {
     -ms-overflow-style: none;  /* IE and Edge */
   	scrollbar-width: none;  /* Firefox */
-	}
-	h1 {
-		font-size: 20px;
-		color: white;
-		font-weight: 500;
-	}
-	h2 {
-		font-size: 14px;
-		color: rgb(var(--grey));
-		font-weight: 500;
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
 	}
 </style>

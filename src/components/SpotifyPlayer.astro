@@ -9,6 +9,7 @@ import CircleNotch from "../icons/CircleNotch.astro";
   const containerTitle = document.getElementById("text-title");
   const containerArtist = document.getElementById("text-artist");
   const containerImage = document.getElementById("artwork");
+  const loader = document.getElementById("loaderIcon");
 
   let toggle = true;
 
@@ -52,6 +53,10 @@ import CircleNotch from "../icons/CircleNotch.astro";
       if (containerArtist) {
         containerArtist.innerText = artist;
       }
+
+      if (loader) {
+        loader.style.display = 'none';
+      }
     } catch (e) {
       console.log(e);
     }
@@ -85,36 +90,23 @@ import CircleNotch from "../icons/CircleNotch.astro";
     border-radius: 8px;
     color: rgb(var(--white));
     border: none;
-    background: linear-gradient(126deg, #212121, var(--blackish));
+    background: linear-gradient(to right, #212121, var(--blackish));
     transition: 0.3s all ease-in-out;
     min-width: 64px;
     min-height: 64px;
     max-height: 64px;
     max-width: 64px;
-  }
 
-  .loader {
-    display: none;
-    -webkit-animation: rotating 2s linear infinite;
-    -moz-animation: rotating 2s linear infinite;
-    -ms-animation: rotating 2s linear infinite;
-    -o-animation: rotating 2s linear infinite;
-    animation: rotating 1s linear infinite;
-    position: absolute;
-    top: 4px;
-    left: 4px;
-  }
-
-  button.success {
-    max-width: 240px;
-  }
-
-  button.loading .icon {
-    display: none;
-  }
-
-  button.loading .loader {
-    display: block;
+    svg {
+      -webkit-animation: rotating 2s linear infinite;
+      -moz-animation: rotating 2s linear infinite;
+      -ms-animation: rotating 2s linear infinite;
+      -o-animation: rotating 2s linear infinite;
+      animation: rotating 1s linear infinite;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+    }
   }
 
   button:hover {

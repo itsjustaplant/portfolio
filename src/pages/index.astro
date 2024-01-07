@@ -10,7 +10,7 @@ import Skill from '../sections/Skill.astro';
 
 import SpotifyPlayer from '../components/SpotifyPlayer.astro';
 ---
-<Layout title="justaplant">
+<Layout>
 	<main id='main'>
 		<Header />
 		<About />
@@ -21,21 +21,3 @@ import SpotifyPlayer from '../components/SpotifyPlayer.astro';
 	</main>
 	<SpotifyPlayer />
 </Layout>
-
-<style>
-	main {
-		font-family: 'Noto Sans', sans-serif;
-		margin: auto;
-		max-width: 540px;
-		padding: 12px;
-	}
-	body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-	main {
-    -ms-overflow-style: none;  /* IE and Edge */
-  	scrollbar-width: none;  /* Firefox */
-	}
-</style>

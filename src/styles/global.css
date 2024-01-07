@@ -1,0 +1,52 @@
+:root {
+  --white: 255, 255, 255;
+  --grey: 170, 170, 170;
+  --dark-grey: 153, 153, 153;
+  --blackish: #333333;
+  --eerie-black: #212121;
+}
+
+html {
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: var(--eerie-black);
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  font-family: 'Noto Sans', sans-serif;
+  margin: auto;
+  max-width: 540px;
+  padding: 12px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+h1 {
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 14px;
+  color: rgb(var(--grey));
+  font-weight: 500;
+}
+
+p {
+  color: rgb(var(--grey));
+  font-size: 14px;
+  margin: 0;
+}
+

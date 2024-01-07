@@ -1,0 +1,27 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+
+import ArrowLeft from "../icons/ArrowLeft.astro";
+import Share from "../icons/Share.astro";
+
+const {
+	frontmatter: { title, description },
+} = Astro.props;
+---
+<html lang="en">
+	<BaseHead title={`justaplant | ${title}`} description={description} />
+	<body>
+		<main>
+			<h1 class="article-header-title">{title}</h1>
+			<article>
+				<slot />
+			</article>
+		</main>
+	</body>
+</html>
+
+<style>
+  article {
+    margin-top: 16px;
+  }
+</style>

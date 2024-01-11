@@ -7,7 +7,7 @@ thx astro
 [X] - move spotify api
 [-] - create letterboxd api
 [ ] - dockerize
-[ ] - remove paragraph element
+[X] - remove paragraph element
 [ ] - use css variables
 [X] - move Now playing section into react
 [ ] - tailwind

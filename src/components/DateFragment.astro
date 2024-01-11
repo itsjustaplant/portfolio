@@ -17,7 +17,9 @@ const { date, text, link, desc } = Astro.props;
 	<SubHeader text={date} />
 	<div>
 		<Link text={text} link={link}/>
-		<Paragraph text={desc}/>
+		<p>
+			{desc}
+		</p>
 	</div>
 </div>
 

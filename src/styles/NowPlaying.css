@@ -24,14 +24,6 @@
   height: 80px;
   min-width: 80px;
   border-radius: 8px;
-
-  img {
-    width: 80px;
-    height: 80px;
-    max-width: 80px;
-    max-height: 80px;
-    border-radius: 8px;
-  }
 }
 
 .right {
@@ -84,6 +76,12 @@
       height: 100%;
     }
   }
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
 }
 
 @keyframes skeleton-loading {

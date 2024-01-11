@@ -21,6 +21,6 @@ const { title, description } = Astro.props;
 	<meta http-equiv="Content-Security-Policy" content="object-src 'none'"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="preload" as="style" onload="this.onload=null; this.rel='stylesheet'; document.body.classList.add('fontLoaded')" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
 	<title>{title}</title>
 </head>

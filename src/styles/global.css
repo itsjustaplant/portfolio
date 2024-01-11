@@ -18,13 +18,16 @@ body {
   background-color: var(--eerie-black);
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+  
+  &.fontLoaded {
+    font-family: 'Noto Sans', sans-serif;
+  }
 }
 body::-webkit-scrollbar {
   display: none;
 }
 
 main {
-  font-family: 'Noto Sans', sans-serif;
   margin: auto;
   max-width: 540px;
   padding: 12px;

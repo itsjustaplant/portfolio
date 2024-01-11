@@ -38,6 +38,7 @@ const NowPlaying = () => {
     if (data.op === 0) {
       const { d } = data;
       const { spotify } = d;
+
       setNowPlayingData(spotify ?? defaultNowPlayingData);
       setShow(true);
     }
@@ -78,7 +79,7 @@ const NowPlaying = () => {
   return (
     <div className="now-playing-container">
     <div className={`left ${!show ? 'skeleton' : ''}`}>
-      <img src={nowPlayingData?.album_art_url}/>
+      <img src={nowPlayingData?.album_art_url} alt={`Cover art of ${nowPlayingData?.song} by ${nowPlayingData?.artist}`}/>
     </div>
     <div className="right">
       <div className="right--top">

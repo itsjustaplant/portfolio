@@ -35,6 +35,7 @@
   .right--top {
     display: flex;
     flex-direction: column;
+    gap: 2px;
   }
 
   .right--bottom {

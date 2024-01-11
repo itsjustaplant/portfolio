@@ -8,7 +8,7 @@ module.exports = {
   overrides: [
     {
       // Define the configuration for `.astro` file.
-      files: ["*.astro"],
+      files: ["*.astro", "*.tsx"],
       // Allows Astro components to be parsed.
       parser: "astro-eslint-parser",
       // Parse the script in `.astro` as TypeScript by adding the following configuration.
@@ -22,7 +22,8 @@ module.exports = {
         "astro/no-set-html-directive": "error",
         "eol-last": ["error", "always"],
         "no-trailing-spaces": ["error"],
-        "indent": ["error", "tab"]
+        "indent": ["error", "tab"],
+        "semi": "error"
       },
     },
     // ...

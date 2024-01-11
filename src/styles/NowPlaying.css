@@ -35,10 +35,6 @@
   .right--top {
     display: flex;
     flex-direction: column;
-
-    span {
-      
-    }
   }
 
   .right--bottom {

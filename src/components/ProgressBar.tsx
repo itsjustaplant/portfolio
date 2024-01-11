@@ -15,9 +15,15 @@ const formatSeconds = (seconds: number): string => {
   return result;
 }
 
+const getProgress = (indicator: number, length: number): number => {
+  if (indicator >= length) return 100;
+
+  return indicator / length * 100;
+}
+
 const ProgressBar = (props: PropsType) => {
   const { start, end } = props;
-  const interval = useRef<NodeJS.Timer>();
+  const interval = useRef<NodeJS.Timeout>();
 
   const [current, setCurrent] = useState(new Date().getTime());
 
@@ -27,8 +33,8 @@ const ProgressBar = (props: PropsType) => {
   const length = Math.floor((end - start) / 1000);
   const indicator = Math.floor((current - start) / 1000);
   const progressStyle = {
-    '--percent': end ? indicator / length * 100 : 0
-  }
+    '--percent': end ? getProgress(indicator, length) : 0
+  } as React.CSSProperties;
   
   useEffect(() => {
     interval.current = setInterval(() => {
@@ -36,7 +42,7 @@ const ProgressBar = (props: PropsType) => {
       setCurrent(date.getTime());
     }, 1000);
     return () => clearInterval(interval.current);
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (end) {
@@ -63,7 +69,7 @@ const ProgressBar = (props: PropsType) => {
         <span className="timer--end">{endTimer}</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProgressBar;

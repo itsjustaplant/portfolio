@@ -16,7 +16,7 @@ const defaultNowPlayingData = {
 
 const NowPlaying = () => {
   const socket = useRef<WebSocket>();
-  const heartbeatInterval = useRef<NodeJS.Timer>();
+  const heartbeatInterval = useRef<NodeJS.Timeout>();
 
   const [nowPlayingData, setNowPlayingData] = useState(defaultNowPlayingData);
   const [show, setShow] = useState(false);

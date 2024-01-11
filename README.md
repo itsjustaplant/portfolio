@@ -3,7 +3,11 @@ built with astro
 thx astro
 
 # todo
-[ ] - merge tag and blog buttons into one component as button/link for reusability
-[ ] - move spotify api
-[ ] - create letterboxd api
+[-] - merge tag and blog buttons into one component as button/link for reusability
+[X] - move spotify api
+[-] - create letterboxd api
 [ ] - dockerize
+[ ] - remove paragraph element
+[ ] - use css variables
+[X] - move Now playing section into react
+[ ] - tailwind

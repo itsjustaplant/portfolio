@@ -1,26 +1,19 @@
 ---
-import Link from './Link.astro';
-
 export interface Props {
   text: string;
-  link?: string;
 }
 
-const { text, link} = Astro.props;
+const { text} = Astro.props;
 ---
 
-<div class="tag">
-	{link ? (
-		<Link link={link} text={text} />
-	) : (
-		<span>
-			{text}
-		</span>
-	)}
+<div class="chip">
+	<span>
+		{text}
+	</span>
 </div>
 
 <style>
-  .tag {
+  .chip {
     display: inline-block;
     font-size: 14px;
     border-radius: 8px;
@@ -30,7 +23,7 @@ const { text, link} = Astro.props;
     transition: 0.3s all ease-in-out;
   }
 
-  .tag:hover {
+  .chip:hover {
     -webkit-box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
     -moz-box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);
     box-shadow: 0px 0px 1px 1px rgba(170,170,170,0.6);

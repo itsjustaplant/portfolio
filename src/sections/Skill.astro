@@ -1,6 +1,5 @@
 ---
-import SectionHeader from "../components/SectionHeader.astro";
-import Tag from "../components/Tag.astro";
+import Chip from "../components/Chip.astro";
 import SectionWrapper from "../components/SectionWrapper.astro";
 
 const Skills = [
@@ -32,7 +31,7 @@ const Skills = [
 ---
 <SectionWrapper title="Skills">
 	<div class="tags">
-		{Skills.map(skill => <Tag text={skill.text} />)}
+		{Skills.map(skill => <Chip text={skill.text} />)}
 	</div>
 </SectionWrapper>
 

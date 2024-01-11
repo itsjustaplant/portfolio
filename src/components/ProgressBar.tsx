@@ -46,7 +46,8 @@ const ProgressBar = (props: PropsType) => {
 
   useEffect(() => {
     if (end) {
-      setCurrentTimer(formatSeconds(indicator));
+      const param = indicator >= length ? length : indicator;
+      setCurrentTimer(formatSeconds(param));
     } else {
       setCurrentTimer("00:00");
     }

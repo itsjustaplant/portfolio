@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-import '../styles/ProgressBar.css';
-
 interface PropsType {
   end: number;
   start: number;
@@ -32,9 +30,7 @@ const ProgressBar = (props: PropsType) => {
 
   const length = Math.floor((end - start) / 1000);
   const indicator = Math.floor((current - start) / 1000);
-  const progressStyle = {
-    '--percent': end ? getProgress(indicator, length) : 0
-  } as React.CSSProperties;
+  const percent = end ? getProgress(indicator, length) : 0;
   
   useEffect(() => {
     interval.current = setInterval(() => {
@@ -63,11 +59,13 @@ const ProgressBar = (props: PropsType) => {
   }, [end]);
   
   return (
-    <div className="progress-bar-container">
-      <div className="progress" style={progressStyle}/>
-      <div className="progress-bar-timer">
-        <span className="timer--current">{currentTimer}</span>
-        <span className="timer--end">{endTimer}</span>
+    <div className="flex flex-col justify-center gap-0.5">
+      <div className="w-full bg-jet rounded-full h-1.5 dark:bg-gray-700">
+        <div className="bg-white h-1.5 rounded-full" style={{width: `${percent}%`}}></div>
+      </div>
+      <div className="flex flex-row justify-between text-white text-xs w-full my-px">
+        <span>{currentTimer}</span>
+        <span>{endTimer}</span>
       </div>
     </div>
   );

@@ -18,15 +18,7 @@ const EducationData = [
 ];
 ---
 <SectionWrapper title="Education">
-	<div class="education-container">
+	<div class="flex flex-col gap-3">
 		{EducationData.map(edu => <DateFragment date={edu.date} text={edu.text} link={edu.link} desc={edu.description} />)}
 	</div>
 </SectionWrapper>
-
-<style>
-  .education-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-</style>

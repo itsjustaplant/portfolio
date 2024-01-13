@@ -30,15 +30,7 @@ const Skills = [
 ];
 ---
 <SectionWrapper title="Skills">
-	<div class="tags">
+	<div class="flex flex-wrap gap-1">
 		{Skills.map(skill => <Chip text={skill.text} />)}
 	</div>
 </SectionWrapper>
-
-<style>
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-</style>

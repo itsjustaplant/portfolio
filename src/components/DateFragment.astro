@@ -1,6 +1,7 @@
 ---
 import SubHeader from "./SubHeader.astro";
 import Link from "./Link";
+import Paragraph from "./Paragraph.astro";
 
 interface Props {
   date: string;
@@ -12,18 +13,13 @@ interface Props {
 const { date, text, link, desc } = Astro.props;
 ---
 
-<div class="wrapper">
+<div class="flex">
 	<SubHeader text={date} />
 	<div>
 		<Link text={text} link={link}/>
-		<p>
+		<Paragraph>
 			{desc}
-		</p>
+		</Paragraph>
 	</div>
 </div>
 
-<style>
-  .wrapper {
-    display: flex;
-  }
-</style>

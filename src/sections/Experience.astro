@@ -30,15 +30,7 @@ const ExperinceData = [
 ];
 ---
 <SectionWrapper title="Work Experience">
-	<div class="experience-container">
+	<div class="flex flex-col gap-3">
 		{ExperinceData.map(exp => <DateFragment date={exp.date} text={exp.text} link={exp.link} desc={exp.description} />)}
 	</div>
 </SectionWrapper>
-
-<style>
-  .experience-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-</style>

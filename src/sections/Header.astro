@@ -3,25 +3,22 @@ import SectionWrapper from "../components/SectionWrapper.astro";
 import Glare from "../icons/Glare.astro";
 ---
 
-<SectionWrapper>
-	<div>
-		<h1>justaplant</h1>
+<SectionWrapper className="mt-0">
+	<div class="flex items-center">
+		<h1 class="text-lg text-white font-medium my-3">justaplant</h1>
 		{false && (
 			<a href="/blog" data-astro-prefetch="hover" class="blog-cta">
-				<span>Blog</span>
-				<Glare className="glare-icon"/>
+				<span class="leading-4">Blog</span>
+				<Glare className="w-4 h-4 fill-white"/>
 			</a>
 		)}
 	</div>
-	<h2>Alperen Sahin, Frontend Developer from Ankara</h2>
+	<h2 class="text-md text-silver font-medium">
+		Alperen Sahin, Frontend Developer from Ankara
+	</h2>
 </SectionWrapper>
 
 <style>
-	div {
-		display: flex;
-		align-items: center;
-	}
-
 	.blog-cta {
 		display: flex;
 		justify-content: center;
@@ -39,16 +36,6 @@ import Glare from "../icons/Glare.astro";
 		box-shadow: 0px 0px 34px -12px rgba(239,148,108,1);
 		background: linear-gradient(273deg, #EF946C, #70877F);
 		text-decoration: none;
-
-		span {
-			line-height: 16px;
-		}
-
-		svg {
-			width: 16px;
-			height: 16px;
-			fill: rgb(var(--white));
-		}
 	}
 
 	.blog-cta:hover {

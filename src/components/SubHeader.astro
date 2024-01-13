@@ -6,15 +6,6 @@ export interface Props {
 const { text } = Astro.props;
 ---
 
-<span>
+<span class="text-md text-battleship-gray inline-block min-w-40">
 	{text}
 </span>
-
-<style>
-  span {
-    font-size: 14px;
-    color: rgb(var(--dark-grey));
-    min-width: 150px;
-    display: inline-block;
-  }
-</style>

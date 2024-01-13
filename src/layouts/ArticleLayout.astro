@@ -1,5 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import Body from "../components/Body.astro";
+import Main from "../components/Main.astro";
 
 const {
 	frontmatter: { title, description },
@@ -7,18 +9,12 @@ const {
 ---
 <html lang="en">
 	<BaseHead title={`justaplant | ${title}`} description={description} />
-	<body>
-		<main>
+	<Body>
+		<Main>
 			<h1 class="article-header-title">{title}</h1>
-			<article>
+			<article class="mt-4">
 				<slot />
 			</article>
-		</main>
-	</body>
+		</Main>
+	</Body>
 </html>
-
-<style>
-  article {
-    margin-top: 16px;
-  }
-</style>

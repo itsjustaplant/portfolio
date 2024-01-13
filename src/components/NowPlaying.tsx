@@ -4,7 +4,6 @@ import { useLanyardWS, type Spotify } from 'use-lanyard';
 import ProgressBar from './ProgressBar';
 import Link from './Link';
 
-import '../styles/NowPlaying.css';
 
 const defaultNowPlayingData = {
   song: 'Duvet',
@@ -32,17 +31,17 @@ const NowPlaying = () => {
   // here is quick reminder for you plant :: this allows you to render skeleton loader if data is not present, we set the default data on effect for skeleton
   if (!data) {
     return (
-      <div className="now-playing-container">
-        <div className={`left skeleton`}>
-          <img alt={`Skeleton image}`}/>
+      <div className="my-4 p-2 rounded-md border-none bg-eerie-black flex gap-3 shadow-dark">
+        <div className='h-20 min-w-20 rounded-md animate-skeleton'>
+          <img className='hidden' alt={`Skeleton image}`}/>
         </div>
-        <div className="right">
-          <div className="right--top">
-            <span className={`skeleton`} id="song"></span>
-            <span className={`skeleton`} id="artist"></span>
+        <div className="flex flex-col w-full py-1 gap-2">
+          <div className="flex flex-col gap-1">
+            <span className='animate-skeleton text-md text-white min-h-5 leading-5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left'></span>
+            <span className='animate-skeleton text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left'></span>
           </div>
-          <div className='right--bottom'>
-            <div className='skeleton progress-bar-placeholder'/>
+          <div className='flex flex-col w-full h-full justify-center'>
+            <div className='animate-skeleton w-full h-full'/>
           </div>
         </div>
       </div>
@@ -50,16 +49,16 @@ const NowPlaying = () => {
   }
 
   return (
-    <div className="now-playing-container">
-      <div className={`left `}>
-        <img src={spotifyData?.album_art_url ?? defaultNowPlayingData.album_art_url } alt={`Cover art of ${spotifyData?.song} by ${spotifyData?.artist}`}/>
+    <div className="my-4 p-2 rounded-md border-none bg-eerie-black flex gap-3 shadow-dark">
+      <div className='h-20 min-w-20 rounded-md'>
+        <img className='w-20 h-20 rounded-md' src={spotifyData?.album_art_url ?? defaultNowPlayingData.album_art_url } alt={`Cover art of ${spotifyData?.song} by ${spotifyData?.artist}`}/>
       </div>
-      <div className="right">
-        <div className="right--top">
-          <Link showIcon={false} link={`https://open.spotify.com/track/${spotifyData?.track_id}`} target="blank" id="song" text={spotifyData?.song}/>
-          <span id="artist">{`by ${spotifyData?.artist}`}</span>
+      <div className="flex flex-col w-full py-1 gap-2">
+        <div className="flex flex-col">
+          <Link className='text-md text-white min-h-5 leading-5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left' showIcon={false} link={`https://open.spotify.com/track/${spotifyData?.track_id}`} target="blank" text={spotifyData?.song}/>
+          <span className='text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left'>{`by ${spotifyData?.artist}`}</span>
         </div>
-        <div className='right--bottom'>
+        <div className='flex flex-col w-full'>
           <ProgressBar start={spotifyData?.timestamps.start} end={spotifyData?.timestamps.end}/>
         </div>
       </div>

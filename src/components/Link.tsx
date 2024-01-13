@@ -12,7 +12,7 @@ const Link = (props: PropsType) => {
   const { id = "", showIcon = true, text, link, target='_blank', className = '' } = props;
 
   return (
-    <a className={`${className} text-white text-md no-underline cursor-pointer hover:underline`}
+    <a className={`${className} text-white text-md no-underline cursor-pointer align-text-top hover:underline`}
       href={link} 
       target={target} 
       id={id}

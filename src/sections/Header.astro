@@ -6,14 +6,12 @@ import Glare from "../icons/Glare.astro";
 <SectionWrapper>
 	<div>
 		<h1>justaplant</h1>
-		{false && (
-			<a href="/blog" data-astro-prefetch="hover" class="blog-cta">
-				<span>Blog</span>
-				<Glare className="glare-icon"/>
-			</a>
-		)}
+		<a href="/blog" data-astro-prefetch="hover" class="blog-cta">
+			<span>Blog</span>
+			<Glare className="glare-icon"/>
+		</a>
 	</div>
-	<h2>Alperen Sahin Frontend Developer from Ankara</h2>
+	<h2>Alperen Sahin, Frontend Developer from Ankara</h2>
 </SectionWrapper>
 
 <style>
@@ -21,6 +19,7 @@ import Glare from "../icons/Glare.astro";
 		display: flex;
 		align-items: center;
 	}
+
 	.blog-cta {
 		display: flex;
 		justify-content: center;
@@ -40,7 +39,7 @@ import Glare from "../icons/Glare.astro";
 		text-decoration: none;
 
 		span {
-			line-height: 14px;
+			line-height: 16px;
 		}
 
 		svg {

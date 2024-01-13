@@ -1,0 +1,14 @@
+a {
+  color: rgb(var(--white));
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  vertical-align: text-top;
+}
+a:hover {
+  text-decoration: underline;
+}
+svg {
+  width: 12px;
+  height: 12px;
+}

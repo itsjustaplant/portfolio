@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import '../styles/global.css';
 
 export interface Props {
@@ -24,3 +26,5 @@ const { title, description } = Astro.props;
 	<link rel="preload" as="style" onload="this.onload=null; this.rel='stylesheet'; document.body.classList.add('fontLoaded')" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
 	<title>{title}</title>
 </head>
+
+<ViewTransitions />

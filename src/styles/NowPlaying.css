@@ -1,5 +1,5 @@
 .now-playing-container {
-  margin: 12px 0;
+  margin: 16px 0;
   padding: 8px;
   border-radius: 8px;
   border: none;
@@ -13,7 +13,6 @@
 
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
-  margin: 1px;
 
   img {
     display: none;
@@ -31,11 +30,12 @@
   flex-direction: column;
   width: 100%;
   padding: 4px 0;
+  gap: 2px;
 
   .right--top {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
   }
 
   .right--bottom {

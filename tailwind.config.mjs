@@ -23,7 +23,9 @@ export default {
 			},
 			boxShadow: {
 				light: '0px 0px 1px 1px rgba(170,170,170,0.6)',
-				dark: '0px 0px 1px 1px rgba(66,66,66,0.6)' 
+				dark: '0px 0px 1px 1px rgba(66,66,66,0.6)',
+				green: '0px 0px 34px -12px rgba(239,148,108,1)',
+				'green-active': '0px 0px 30px -9px rgba(239,148,108,1)' 
 			},
 			keyframes: {
 				'skeleton-loading': {
@@ -33,6 +35,9 @@ export default {
 			},
 			animation: {
 				skeleton: 'skeleton-loading 1s linear infinite alternate'
+			},
+			backgroundImage: {
+				'green-gradient': 'linear-gradient(273deg, #EF946C, #70877F)'
 			}
 		},
 	},

@@ -1,6 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
+
 import Layout from '../../layouts/Layout.astro';
+
+const data = await getCollection('blog');
+const sanitizedBlogData = await Promise.all(data?.map(async ({ slug, data }) => ({ ...data })));
 ---
 <Layout>
-  alperen
+	{sanitizedBlogData.map(({title, description}) => (
+    <h2>{title}</h2>
+    <span>{description}</span>
+	))}
 </Layout>

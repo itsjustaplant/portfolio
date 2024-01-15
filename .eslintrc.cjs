@@ -1,5 +1,12 @@
 module.exports = {
   // ...
+  parserOptions: {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true
+  },
   extends: [
     // ...
     "plugin:astro/recommended",

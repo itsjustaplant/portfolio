@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-type PropsType = {
+type Props = {
   link: string;
   text: string;
   className?: string;
@@ -8,7 +8,7 @@ type PropsType = {
   showIcon?: boolean
 } & ComponentPropsWithoutRef<"a">
 
-const Link = (props: PropsType) => {
+const Link = (props: Props) => {
   const { id = "", showIcon = true, text, link, target='_blank', className = '' } = props;
 
   return (

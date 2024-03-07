@@ -23,6 +23,7 @@ const NowPlaying = () => {
   const [spotifyData, setSpotifyData] = useState<Spotify>(defaultNowPlayingData);
 
   useEffect(() => {
+    console.log('set spotify data');
     const { spotify } = data || {};
     setSpotifyData(spotify || defaultNowPlayingData);
   }, [data]);

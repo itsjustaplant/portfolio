@@ -11,13 +11,13 @@ const formatSeconds = (seconds: number): string => {
   const result = `${mins < 10 ? "0" : ""}${mins}:${secs < 10 ? "0" : ""}${secs}`;
 
   return result;
-}
+};
 
 const getProgress = (indicator: number, length: number): number => {
   if (indicator >= length) return 100;
 
-  return indicator / length * 100;
-}
+  return (indicator / length) * 100;
+};
 
 const ProgressBar = (props: PropsType) => {
   const { start, end } = props;
@@ -31,14 +31,14 @@ const ProgressBar = (props: PropsType) => {
   const length = Math.floor((end - start) / 1000);
   const indicator = Math.floor((current - start) / 1000);
   const percent = end ? getProgress(indicator, length) : 0;
-  
+
   useEffect(() => {
     interval.current = setInterval(() => {
       const date = new Date();
       setCurrent(date.getTime());
     }, 1000);
     return () => clearInterval(interval.current);
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (end) {
@@ -47,21 +47,23 @@ const ProgressBar = (props: PropsType) => {
     } else {
       setCurrentTimer("00:00");
     }
-  }, [start, current, end])
+  }, [start, current, end]);
 
   useEffect(() => {
     if (end) {
       setEndTimer(formatSeconds(length));
     } else {
-      setEndTimer("03:23")
+      setEndTimer("03:23");
     }
-    
   }, [end]);
-  
+
   return (
     <div className="flex flex-col justify-center gap-0.5">
       <div className="w-full bg-jet rounded-full h-1.5 dark:bg-gray-700">
-        <div className="bg-white h-1.5 rounded-full" style={{width: `${percent}%`}}></div>
+        <div
+          className="bg-white h-1.5 rounded-full"
+          style={{ width: `${percent}%` }}
+        ></div>
       </div>
       <div className="flex flex-row justify-between text-white text-xs w-full my-px">
         <span>{currentTimer}</span>

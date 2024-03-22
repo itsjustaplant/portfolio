@@ -1,8 +1,10 @@
 # my website
+
 built with astro
 thx astro
 
 # todo
+
 [-] - merge tag and blog buttons into one component as button/link for reusability
 [X] - move spotify api ?? moved to WS
 [?] - create letterboxd api ?? considering this for a blog post

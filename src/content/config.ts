@@ -1,7 +1,7 @@
 import { defineCollection } from "astro:content";
 
-const blogCollection = defineCollection({})
+const blogCollection = defineCollection({});
 
 export const collections = {
-  blog: blogCollection
-}
+  blog: blogCollection,
+};

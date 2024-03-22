@@ -41,7 +41,7 @@ export default {
         pattern:
           "linear-gradient(rgb(21, 21, 21) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(21, 21, 21) 1px, rgb(17, 17, 17) 1px)",
         overlay:
-          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 1) 60%)",
+          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 1) 80%)",
       },
     },
   },

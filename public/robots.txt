@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://justaplant.dev/sitemap-index.xml

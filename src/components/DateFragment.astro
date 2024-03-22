@@ -15,7 +15,7 @@ const { date, text, link, desc } = Astro.props;
 
 <div class="flex">
 	<SubHeader text={date} />
-	<div>
+	<div class="flex flex-col">
 		<Link text={text} link={link}/>
 		<Paragraph>
 			{desc}

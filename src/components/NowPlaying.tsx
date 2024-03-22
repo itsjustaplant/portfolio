@@ -23,7 +23,6 @@ const NowPlaying = () => {
   const [spotifyData, setSpotifyData] = useState<Spotify>(defaultNowPlayingData);
 
   useEffect(() => {
-    console.log('set spotify data');
     const { spotify } = data || {};
     setSpotifyData(spotify || defaultNowPlayingData);
   }, [data]);
@@ -32,7 +31,7 @@ const NowPlaying = () => {
   // here is quick reminder for you plant :: this allows you to render skeleton loader if data is not present, we set the default data on effect for skeleton
   if (!data) {
     return (
-      <div className="my-4 p-2 rounded-md border-none bg-eerie-black flex gap-3 shadow-dark">
+      <div className="my-4 p-2 rounded-md border-none bg-dark-eerie-black flex gap-3 shadow-dark transition-all duration-300 hover:shadow-light">
         <div className='h-20 min-w-20 rounded-md animate-skeleton'>
           <img className='hidden' alt={`Skeleton image}`}/>
         </div>
@@ -50,7 +49,7 @@ const NowPlaying = () => {
   }
 
   return (
-    <div className="my-4 p-2 rounded-md border-none bg-eerie-black flex gap-3 shadow-dark">
+    <div className="my-4 p-2 rounded-md border-none bg-dark-eerie-black flex gap-3 shadow-dark transition-all duration-300 hover:shadow-light">
       <div className='h-20 min-w-20 rounded-md'>
         <img className='w-20 h-20 rounded-md' src={spotifyData?.album_art_url ?? defaultNowPlayingData.album_art_url } alt={`Cover art of ${spotifyData?.song} by ${spotifyData?.artist}`}/>
       </div>

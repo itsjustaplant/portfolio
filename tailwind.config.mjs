@@ -7,7 +7,7 @@ export default {
 			jet: '#333333',
 			'battleship-gray': '#999999',
 			'eerie-black': '#181818',
-			'dark-eerie-black': '#212121',
+			'dark-eerie-black': 'rgb(21,21,21)',
 			silver: '#AAAAAA'
 		},
 		extend: {
@@ -37,7 +37,9 @@ export default {
 				skeleton: 'skeleton-loading 1s linear infinite alternate'
 			},
 			backgroundImage: {
-				'green-gradient': 'linear-gradient(273deg, #EF946C, #70877F)'
+				'green-gradient': 'linear-gradient(273deg, #EF946C, #70877F)',
+				'pattern': 'linear-gradient(rgb(21, 21, 21) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(21, 21, 21) 1px, rgb(17, 17, 17) 1px)',
+				'overlay': 'linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 1) 60%)'
 			}
 		},
 	},

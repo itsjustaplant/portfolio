@@ -16,21 +16,18 @@ const Skills = [
 		text: 'Stencil'
 	},
 	{
-		text: 'Full Stack Development'
-	},
-	{
 		text: 'Rust'
 	},
 	{
 		text: 'Go'
 	},
 	{
-		text: 'Python'
+		text: 'Full Stack Development'
 	},
 ];
 ---
 <SectionWrapper title="Skills">
-	<div class="flex flex-wrap gap-1">
+	<div class="flex flex-wrap gap-1.5">
 		{Skills.map(skill => <Chip text={skill.text} />)}
 	</div>
 </SectionWrapper>

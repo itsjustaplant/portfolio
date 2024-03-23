@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint-fix": "npx prettier --write .",
+    "pretty": "npx prettier --write .",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -8,10 +8,10 @@ interface Props {
   link: string;
 }
 
-const {website, text, link} = Astro.props;
+const { website, text, link } = Astro.props;
 ---
 
 <div class="flex">
-	<SubHeader text={website} />
-	<Link link={link} text={text} />
+  <SubHeader text={website} />
+  <Link link={link} text={text} />
 </div>

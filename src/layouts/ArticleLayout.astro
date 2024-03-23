@@ -4,17 +4,18 @@ import Body from "../components/Body.astro";
 import Main from "../components/Main.astro";
 
 const {
-	frontmatter: { title, description },
+  frontmatter: { title, description },
 } = Astro.props;
 ---
+
 <html lang="en">
-	<BaseHead title={`justaplant | ${title}`} description={description} />
-	<Body>
-		<Main>
-			<h1 class="article-header-title">{title}</h1>
-			<article class="mt-4">
-				<slot />
-			</article>
-		</Main>
-	</Body>
+  <BaseHead title={`justaplant | ${title}`} description={description} />
+  <Body>
+    <Main>
+      <h1 class="article-header-title">{title}</h1>
+      <article class="mt-4">
+        <slot />
+      </article>
+    </Main>
+  </Body>
 </html>

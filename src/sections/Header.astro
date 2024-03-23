@@ -4,13 +4,15 @@ import Glare from "../icons/Glare.astro";
 ---
 
 <SectionWrapper applyMargin={false}>
-	<div class="flex items-center">
-		<h1 class="text-lg text-white font-medium my-3">justaplant</h1>
-		{false && (
-			<a href="/blog" data-astro-prefetch="hover" class="blog-cta">
-				<span class="leading-4">Blog</span>
-				<Glare className="w-4 h-4 fill-white"/>
-			</a>
-		)}
-	</div>
+  <div class="flex items-center">
+    <h1 class="text-lg text-white font-medium my-3">justaplant</h1>
+    {
+      false && (
+        <a href="/blog" data-astro-prefetch="hover" class="blog-cta">
+          <span class="leading-4">Blog</span>
+          <Glare className="w-4 h-4 fill-white" />
+        </a>
+      )
+    }
+  </div>
 </SectionWrapper>

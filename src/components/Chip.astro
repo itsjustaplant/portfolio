@@ -3,11 +3,13 @@ export interface Props {
   text: string;
 }
 
-const { text} = Astro.props;
+const { text } = Astro.props;
 ---
 
-<div class="text-md rounded-md py-1.5 px-3 text-white bg-dark-eerie-black transition-all duration-300 hover:cursor-pointer shadow-dark hover:shadow-light">
-	<span>
-		{text}
-	</span>
+<div
+  class="text-md rounded-md py-1.5 px-3 text-white bg-dark-eerie-black transition-all duration-300 hover:cursor-pointer shadow-dark hover:shadow-light"
+>
+  <span>
+    {text}
+  </span>
 </div>

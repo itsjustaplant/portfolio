@@ -3,30 +3,39 @@ import SectionWrapper from "../components/SectionWrapper.astro";
 import ContactFragment from "../components/ContactFragment.astro";
 
 const ContactData = [
-	{
-		website: 'GitHub',
-		text: 'itsjustaplant',
-		link: 'https://github.com/itsjustaplant'
-	},
-	{
-		website: 'LinkedIn',
-		text: 'Alperen Şahin',
-		link: 'https://linkedin.com/in/alperen-%C5%9Fahin-245bb413b'
-	},
-	{
-		website: 'Twitter',
-		text: '@justa_plant',
-		link: 'https://twitter.com/justa_plant'
-	},
-	{
-		website: 'Soundcloud',
-		text: '@justaplant',
-		link: 'https://soundcloud.com/justaplant'
-	}
+  {
+    website: "GitHub",
+    text: "itsjustaplant",
+    link: "https://github.com/itsjustaplant",
+  },
+  {
+    website: "LinkedIn",
+    text: "Alperen Şahin",
+    link: "https://linkedin.com/in/alperen-%C5%9Fahin-245bb413b",
+  },
+  {
+    website: "Twitter",
+    text: "@justa_plant",
+    link: "https://twitter.com/justa_plant",
+  },
+  {
+    website: "Soundcloud",
+    text: "@justaplant",
+    link: "https://soundcloud.com/justaplant",
+  },
 ];
 ---
+
 <SectionWrapper title="Contact">
-	<div>
-		{ContactData.map(con => <ContactFragment website={con.website} text={con.text} link={con.link} />)}
-	</div>
+  <div>
+    {
+      ContactData.map((con) => (
+        <ContactFragment
+          website={con.website}
+          text={con.text}
+          link={con.link}
+        />
+      ))
+    }
+  </div>
 </SectionWrapper>

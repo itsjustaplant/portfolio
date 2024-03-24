@@ -15,7 +15,7 @@ export default {
       fontSize: {
         xs: "10px",
         sm: "12px",
-        md: "15px",
+        md: "16px",
         lg: "20px",
       },
       borderRadius: {
@@ -40,9 +40,9 @@ export default {
       backgroundImage: {
         "green-gradient": "linear-gradient(273deg, #EF946C, #70877F)",
         pattern:
-          "linear-gradient(rgb(21, 21, 21) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(21, 21, 21) 1px, rgb(17, 17, 17) 1px)",
+          "linear-gradient(rgb(31, 31, 31) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(31, 31, 31) 1px, rgb(17, 17, 17) 1px)",
         overlay:
-          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 1) 80%)",
+          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 0.8) 50%)",
       },
     },
   },

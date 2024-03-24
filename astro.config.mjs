@@ -9,9 +9,14 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   prefetch: true,
   site: "https://justaplant.dev",
+  vite: {
+    ssr: {
+      noExternal: "@astrojs/prism",
+    },
+  },
   integrations: [
     mdx({
-      syntaxHighlight: "shiki",
+      syntaxHighlight: "prism",
       shikiConfig: {
         theme: "material-theme-darker",
       },

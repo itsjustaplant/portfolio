@@ -14,3 +14,4 @@ thx astro
 [X] - move Now playing section into react
 [X] - tailwind
 [X] - use-landyard
+[ ] - in tils page add Hi im alperen like title and the list entries in date fragment

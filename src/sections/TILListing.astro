@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+
+import SectionWrapper from "../components/SectionWrapper.astro";
+
+import Link from "../components/Link";
+import Paragraph from "../components/Paragraph.astro";
+import Chip from "../components/Chip.astro";
+
+const data = await getCollection("til");
+const sanitizedTILData = await Promise.all(
+  data?.map(async ({ slug, data }) => ({ ...data, slug })),
+);
+---
+
+<SectionWrapper className="flex flex-col justify-center gap-4 mt-8 w-full">
+  {
+    sanitizedTILData.map(({ title, description, slug, date }) => (
+      <Chip>
+        <div class="flex w-full justify-between items-center">
+          <Link href={`/til/${slug}`} target="_self">
+            {title}
+          </Link>
+          <span class="text-silver text-sm">{date}</span>
+        </div>
+        <Paragraph>{description}</Paragraph>
+      </Chip>
+    ))
+  }
+</SectionWrapper>

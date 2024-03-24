@@ -4,28 +4,28 @@ import SectionWrapper from "../components/SectionWrapper.astro";
 
 const ExperinceData = [
   {
-    date: "Nov 2023 - Nov",
+    date: "2023 - Now",
     text: "Software Engineer",
     link: "https://www.accenture.com/gb-en",
     description:
       "Developing a components library for leading medical company in Switzerland with Stencil, Typescript, React, Vue, Angular.",
   },
   {
-    date: "Sep 2022 — Oct 2023",
+    date: "2022 — 2023",
     text: "Frontend Developer",
     link: "https://www.jotform.com",
     description:
       "Developed internal tools for SEO and Translation teams. Maintained payment system integrations (Stripe, Adyen, Fastspring).",
   },
   {
-    date: "Oct 2021 — Sep 2022",
+    date: "2021 — 2022",
     text: "Technical Support Engineer at Jotform",
     link: "https://www.jotform.com",
     description:
       "Worked on Approvals project. Developed features, fixed bugs attended team meatings to plan development schedule.",
   },
   {
-    date: "Jul 2021 — Sep 2021",
+    date: "2021 — 2021",
     text: "Web Development Intern",
     link: "https://www.jotform.com",
     description:
@@ -35,7 +35,7 @@ const ExperinceData = [
 ---
 
 <SectionWrapper title="Work Experience">
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-4">
     {
       ExperinceData.map((exp) => (
         <DateFragment

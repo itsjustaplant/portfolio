@@ -4,12 +4,13 @@ import SectionHeader from "./SectionHeader.astro";
 interface Props {
   title?: string;
   applyMargin?: boolean;
+  className?: string;
 }
 
-const { title, applyMargin = true } = Astro.props;
+const { title, applyMargin = true, className = "" } = Astro.props;
 ---
 
-<div class={`${applyMargin ? "mt-4" : "mt-0"}`}>
+<div class={`${applyMargin ? "mt-4" : "mt-0"} ${className}`}>
   {title && <SectionHeader title={title} />}
   <slot />
 </div>

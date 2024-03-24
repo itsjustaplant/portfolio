@@ -1,33 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-
 import Layout from "../../layouts/Layout.astro";
-import Link from "../../components/Link";
-import Paragraph from "../../components/Paragraph.astro";
-import Chip from "../../components/Chip.astro";
 
-const data = await getCollection("til");
-const sanitizedTILData = await Promise.all(
-  data?.map(async ({ slug, data }) => ({ ...data, slug })),
-);
+import TIL from "../../sections/TIL.astro";
+import TILListing from "../../sections/TILListing.astro";
 ---
 
 <Layout>
-  <Paragraph> Welcome to my learning journey! </Paragraph>
-  <Paragraph className="mt-1">
-    I've curated a collection of insights and knowledge that I've learned each
-    day.
-  </Paragraph>
-  <div class="flex flex-col justify-center gap-4 mt-4 w-full">
-    {
-      sanitizedTILData.map(({ title, description, slug }) => (
-        <Chip>
-          <Link href={`/til/${slug}`} target="_self">
-            {title}
-          </Link>
-          <Paragraph>{description}</Paragraph>
-        </Chip>
-      ))
-    }
-  </div>
+  <TIL />
+  <TILListing />
 </Layout>

@@ -2,18 +2,34 @@
 layout: "../../../layouts/ArticleLayout.astro"
 title: "Tagged Templates"
 description: "Hello World"
+date: "24.03.2024"
 ---
-import Link from "../../../components/Link"
+import { Prism } from '@astrojs/prism';
 
-Let's start with template literals first.
+While using styled-components, I was amazed by this ✨**super**✨ syntax that allow us to set component styles dynamically. I was wondering what that was and started looking for the answer.
 
-<br />
-```js 
-
-  const username = "justplant";
-  const prompt = `Hello, ${username}` 
-
+```tsx
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: #BF4F74;
+`;
 ```
+
+Let's start with template literals first. 
+<br />
+Template literals are easy way to combine expressions with strings. This process is called _String Interpolation_.
+<br />
+```ts 
+const username = "justaplant";
+const prompt = `Hello, ${username}!`;
+```
+<br />
+In this example, placeholder `${username}` will be replaced with `username`. Can you guess what the evaluated string will be? 
+<br />
+🥁🥁🥁 _drum rolls_ 🥁🥁🥁
+<br />
+You're right! The answer is `Hello, justaplant!`
 <br />
 
 Tagged Templates are basically advanced version of Template Literals that you can parse with functions.

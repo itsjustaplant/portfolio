@@ -1,31 +1,27 @@
 import type { ComponentPropsWithoutRef } from "react";
 
 type Props = {
-  link: string;
-  text: string;
   className?: string;
-  id?: string;
   showIcon?: boolean;
+  size?: "md" | "lg";
 } & ComponentPropsWithoutRef<"a">;
 
 const Link = (props: Props) => {
   const {
-    id = "",
     showIcon = true,
-    text,
-    link,
+    href,
     target = "_blank",
     className = "",
+    size = "md",
   } = props;
 
   return (
     <a
-      className={`${className}text-white text-md no-underline cursor-pointer align-text-top hover:underline`}
-      href={link}
+      className={`text-white text-${size} no-underline cursor-pointer align-text-top hover:underline ${className}`}
+      href={href}
       target={target}
-      id={id}
     >
-      {text}
+      {props.children}
       {showIcon && (
         <svg
           className="inline-block mb-1"

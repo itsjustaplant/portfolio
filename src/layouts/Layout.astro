@@ -1,6 +1,8 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import Header from "../sections/Header.astro";
 import Body from "../components/Body.astro";
+import Main from "../components/Main.astro";
 ---
 
 <!doctype html>
@@ -10,6 +12,9 @@ import Body from "../components/Body.astro";
     description='"Portfolio website of Alperen Sahin"'
   />
   <Body>
-    <slot />
+    <Header />
+    <Main>
+      <slot />
+    </Main>
   </Body>
 </html>

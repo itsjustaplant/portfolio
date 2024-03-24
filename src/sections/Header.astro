@@ -1,18 +1,49 @@
 ---
-import SectionWrapper from "../components/SectionWrapper.astro";
-import Glare from "../icons/Glare.astro";
+import Link from "../components/Link";
+
+const Routes = [
+  {
+    href: "/",
+    text: "Home",
+  },
+  {
+    href: "/til",
+    text: "T.I.L",
+  },
+];
+
+const activePath = Astro.url.pathname;
 ---
 
-<SectionWrapper applyMargin={false}>
-  <div class="flex items-center">
-    <h1 class="text-lg text-white font-medium my-3">justaplant</h1>
-    {
-      false && (
-        <a href="/blog" data-astro-prefetch="hover" class="blog-cta">
-          <span class="leading-4">Blog</span>
-          <Glare className="w-4 h-4 fill-white" />
-        </a>
-      )
-    }
+<header class="mt-0 ml-auto mr-auto max-w-3xl p-3">
+  <div class="flex justify-between items-center">
+    <Link
+      href="/"
+      target="_self"
+      className="font-medium my-3"
+      size="lg"
+      showIcon={false}>justaplant</Link
+    >
+    <div class="flex justify-center items-center gap-2">
+      {
+        Routes.map(({ href, text }, index) => (
+          <>
+            <Link
+              href={href}
+              target="_self"
+              className={`flex ${activePath === href ? "decoration-green" : "decoration-white"}`}
+              showIcon={false}
+            >
+              <span
+                class={`leading-4 ${activePath === href ? "text-green" : "text-white"}`}
+              >
+                {text}
+              </span>
+            </Link>
+            {index !== Routes.length - 1 && <span class="text-white">/</span>}
+          </>
+        ))
+      }
+    </div>
   </div>
-</SectionWrapper>
+</header>

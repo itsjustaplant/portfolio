@@ -66,9 +66,9 @@ const NowPlaying = () => {
             className="text-md text-white min-h-5 leading-5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left"
             showIcon={false}
             link={`https://open.spotify.com/track/${spotifyData?.track_id}`}
-            target="blank"
-            text={spotifyData?.song}
-          />
+          >
+            {spotifyData?.song}
+          </Link>
           <span className="text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left">{`by ${spotifyData?.artist}`}</span>
         </div>
         <div className="flex flex-col w-full">

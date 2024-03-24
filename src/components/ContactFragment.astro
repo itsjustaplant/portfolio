@@ -13,5 +13,5 @@ const { website, text, link } = Astro.props;
 
 <div class="flex">
   <SubHeader text={website} />
-  <Link link={link} text={text} />
+  <Link href={link}>{text}</Link>
 </div>

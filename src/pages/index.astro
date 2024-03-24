@@ -1,25 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import Header from "../sections/Header.astro";
 import About from "../sections/About.astro";
 import Experience from "../sections/Experience.astro";
 import Education from "../sections/Education.astro";
 import Contact from "../sections/Contact.astro";
 import Skill from "../sections/Skill.astro";
-import Main from "../components/Main.astro";
 
 import NowPlaying from "../components/NowPlaying";
 ---
 
 <Layout>
-  <Main>
-    <Header />
-    <About />
-    <Experience />
-    <Education />
-    <Skill />
-    <Contact />
-    <NowPlaying client:load />
-  </Main>
+  <About />
+  <Experience />
+  <Education />
+  <Skill />
+  <Contact />
+  <NowPlaying client:load />
 </Layout>

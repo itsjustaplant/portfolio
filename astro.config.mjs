@@ -13,7 +13,7 @@ export default defineConfig({
     mdx({
       syntaxHighlight: "shiki",
       shikiConfig: {
-        theme: "dracula",
+        theme: "material-theme-darker",
       },
       gfm: false,
     }),

@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Body from "../components/Body.astro";
+import Header from "../sections/Header.astro";
 import Main from "../components/Main.astro";
 
 const {
@@ -8,11 +9,13 @@ const {
 } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
   <BaseHead title={`justaplant | ${title}`} description={description} />
   <Body>
+    <Header />
     <Main>
-      <h1 class="article-header-title">{title}</h1>
+      <h1 class="text-white text-lg font-normal mb-1">{title}</h1>
       <article class="mt-4">
         <slot />
       </article>

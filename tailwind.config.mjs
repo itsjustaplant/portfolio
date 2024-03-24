@@ -9,12 +9,13 @@ export default {
       "eerie-black": "#181818",
       "dark-eerie-black": "rgb(21,21,21)",
       silver: "#AAAAAA",
+      green: "#74c69d",
     },
     extend: {
       fontSize: {
         xs: "10px",
         sm: "12px",
-        md: "14px",
+        md: "15px",
         lg: "20px",
       },
       borderRadius: {

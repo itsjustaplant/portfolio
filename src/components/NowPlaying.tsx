@@ -61,11 +61,11 @@ const NowPlaying = () => {
         />
       </div>
       <div className="flex flex-col w-full py-1 gap-2">
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <Link
             className="text-md text-white min-h-5 leading-5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left"
             showIcon={false}
-            link={`https://open.spotify.com/track/${spotifyData?.track_id}`}
+            href={`https://open.spotify.com/track/${spotifyData?.track_id}`}
           >
             {spotifyData?.song}
           </Link>

@@ -5,7 +5,7 @@ import Header from "../sections/Header.astro";
 import Main from "../components/Main.astro";
 
 const {
-  frontmatter: { title, description },
+  frontmatter: { title, description, date },
 } = Astro.props;
 ---
 
@@ -18,7 +18,8 @@ const {
     <Header />
     <Main>
       <h1 class="text-white text-lg font-normal mb-1">{title}</h1>
-      <article class="mt-4">
+      <span class="text-silver text-sm">{date}</span>
+      <article class="mt-8">
         <slot />
       </article>
     </Main>

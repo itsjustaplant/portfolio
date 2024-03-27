@@ -24,26 +24,28 @@ const activePath = Astro.url.pathname;
       size="lg"
       showIcon={false}>justaplant</Link
     >
-    <div class="flex justify-center items-center gap-2">
-      {
-        Routes.map(({ href, text }, index) => (
-          <>
-            <Link
-              href={href}
-              target="_self"
-              className={`flex ${activePath === href ? "decoration-green" : "decoration-white"}`}
-              showIcon={false}
-            >
-              <span
-                class={`leading-4 ${activePath === href ? "text-green" : "text-white"}`}
+    {
+      false && (
+        <div class="flex justify-center items-center gap-2">
+          {Routes.map(({ href, text }, index) => (
+            <>
+              <Link
+                href={href}
+                target="_self"
+                className={`flex ${activePath === href ? "decoration-green" : "decoration-white"}`}
+                showIcon={false}
               >
-                {text}
-              </span>
-            </Link>
-            {index !== Routes.length - 1 && <span class="text-white">/</span>}
-          </>
-        ))
-      }
-    </div>
+                <span
+                  class={`leading-4 ${activePath === href ? "text-green" : "text-white"}`}
+                >
+                  {text}
+                </span>
+              </Link>
+              {index !== Routes.length - 1 && <span class="text-white">/</span>}
+            </>
+          ))}
+        </div>
+      )
+    }
   </div>
 </header>

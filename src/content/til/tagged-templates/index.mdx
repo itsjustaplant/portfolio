@@ -5,18 +5,34 @@ description: "Hello World"
 date: "24.03.2024"
 ---
 import { Prism } from '@astrojs/prism';
+import Link from '../../../components/Link';
 
-While using styled-components, I was amazed by this ✨**super**✨ syntax that allow us to set component styles dynamically. I was wondering what that was and started looking for the answer.
+While using **styled-components**, I was amazed by this <Link href="https://styled-components.com/docs/basics#adapting-based-on-props" showIcon={false}>✨**amazing**✨</Link> syntax that allows us to set component styles dynamically. 
+
+I was wondering what that was and started looking for the answer. Thanks to the great documentation of **style-components**, it didn't take too much time for me to figure out.
 
 ```tsx
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: #BF4F74;
-`;
-```
+const Button = styled.button<{ $primary?: boolean; }>`
+  /* Adapt the colors based on primary prop */
+  background: ${props => props.$primary ? "#BF4F74" : "white"};
+  color: ${props => props.$primary ? "white" : "#BF4F74"};
 
-Let's start with template literals first. 
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #BF4F74;
+  border-radius: 3px;
+`;
+
+render(
+  <div>
+    <Button>Normal</Button>
+    <Button $primary>Primary</Button>
+  </div>
+);
+```
+<br />
+Before moving on to advanced use of string interpolation, let's start with template literals first. 
 <br />
 Template literals are easy way to combine expressions with strings. This process is called _String Interpolation_.
 <br />

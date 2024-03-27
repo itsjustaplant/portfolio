@@ -40,9 +40,9 @@ export default {
       backgroundImage: {
         "green-gradient": "linear-gradient(273deg, #EF946C, #70877F)",
         pattern:
-          "linear-gradient(rgb(24, 24, 24) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(24, 24, 24) 1px, rgb(17, 17, 17) 1px)",
+          "linear-gradient(rgb(27, 27, 27) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(27, 27, 27) 1px, rgb(17, 17, 17) 1px)",
         overlay:
-          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 0.8) 50%)",
+          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 0.8) 40%)",
       },
     },
   },

@@ -15,7 +15,7 @@ export default {
       fontSize: {
         xs: "10px",
         sm: "12px",
-        md: "16px",
+        md: "15px",
         lg: "20px",
       },
       borderRadius: {

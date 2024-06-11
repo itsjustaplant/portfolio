@@ -15,7 +15,8 @@ body {
     "calt" 1;
   /* fix for Chrome */
 }
-body::-webkit-scrollbar {
+
+::-webkit-scrollbar {
   display: none;
 }
 

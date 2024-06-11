@@ -4,6 +4,8 @@ import Body from "../components/Body.astro";
 import Header from "../sections/Header.astro";
 import Main from "../components/Main.astro";
 
+import "../styles/prism.css"
+
 const {
   frontmatter: { title, description, date },
 } = Astro.props;
@@ -11,9 +13,7 @@ const {
 
 <!doctype html>
 <html lang="en">
-  <BaseHead title={`justaplant | ${title}`} description={description}>
-    <link rel="stylesheet" href="../prism.css" />
-  </BaseHead>
+  <BaseHead title={`justaplant | ${title}`} description={description} />
   <Body>
     <Header />
     <Main>

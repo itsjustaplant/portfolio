@@ -8,8 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "pretty": "npx prettier --write .",
-    "prepare": "husky install"
+    "pretty": "npx prettier --write ."
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.3",
@@ -26,7 +25,6 @@
   },
   "devDependencies": {
     "@types/node": "^18.16.3",
-    "husky": "^8.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   }

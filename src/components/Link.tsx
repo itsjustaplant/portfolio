@@ -4,6 +4,7 @@ type Props = {
   className?: string;
   showIcon?: boolean;
   size?: "md" | "lg";
+  showHoverEffects?: boolean
 } & ComponentPropsWithoutRef<"a">;
 
 const Link = (props: Props) => {
@@ -13,11 +14,12 @@ const Link = (props: Props) => {
     target = "_blank",
     className = "",
     size = "md",
+    showHoverEffects = true
   } = props;
 
   return (
     <a
-      className={`text-white text-${size} no-underline cursor-pointer hover:underline ${className}`}
+      className={`text-white text-${size} no-underline cursor-pointer ${showHoverEffects && 'hover:underline'} ${className}`}
       href={href}
       target={target}
     >

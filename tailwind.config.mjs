@@ -10,6 +10,7 @@ export default {
       "dark-eerie-black": "rgb(21,21,21)",
       silver: "#AAAAAA",
       green: "#74c69d",
+      "off-white": "rgba(255, 255, 255, 0.1)"
     },
     extend: {
       fontSize: {

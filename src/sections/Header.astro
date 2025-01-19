@@ -29,14 +29,9 @@ const activePath = Astro.url.pathname;
         <div class="flex justify-center items-center gap-2">
           {Routes.map(({ href, text }, index) => (
             <>
-              <Link
-                href={href}
-                target="_self"
-                showIcon={false}
-                showHoverEffects={false}
-              >
+              <Link href={href} target="_self" showIcon={false}>
                 <span
-                  class={`leading-4 p-2 rounded hover:bg-off-white hover:!no-underline ${activePath === href ? "text-white underline" : "text-silver"}`}
+                  class={`leading-4 p-2 rounded hover:!no-underline ${activePath === href ? "text-white bg-off-white" : "text-silver"}`}
                 >
                   {text}
                 </span>

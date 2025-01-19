@@ -53,7 +53,7 @@ const ProgressBar = (props: PropsType) => {
     if (end) {
       setEndTimer(formatSeconds(length));
     } else {
-      setEndTimer("03:23");
+      setEndTimer("01:41");
     }
   }, [end]);
 

@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
-import { useLanyardWS, type Spotify } from "use-lanyard";
+import { useLanyardWS } from "use-lanyard";
 
 import ProgressBar from "./ProgressBar";
 import Link from "./Link";
 
 const defaultNowPlayingData = {
-  song: "Duvet",
-  artist: "bôa",
+  song: "Pinegrove",
+  artist: "Angelina",
   album_art_url:
-    "https://i.scdn.co/image/ab67616d0000b2739e030b804258dc2017ad859f",
+    "https://i.scdn.co/image/ab67616d0000b2734e48dddf8b7fa7f224015588",
   timestamps: {
     start: 0,
     end: 0,
   },
-  track_id: "42qNWdLKCI41S4uzfamhFM",
-  album: "Twilight",
+  track_id: "7Dt26KoNRmZpzlVwMe6LSP",
+  album: "Everything So Far",
 };
 
 const NowPlaying = () => {
@@ -31,16 +30,16 @@ const NowPlaying = () => {
           alt={`Cover art of ${spotifyData?.song} by ${spotifyData?.artist}`}
         />
       </div>
-      <div className="flex flex-col w-full py-1 gap-2">
+      <div className="flex flex-col w-full py-1 gap-2 overflow-hidden">
         <div className="flex flex-col gap-1">
           <Link
-            className="text-md text-white min-h-5 leading-5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left"
+            className="text-md text-white min-h-5 text-left truncate"
             showIcon={false}
             href={`https://open.spotify.com/track/${spotifyData?.track_id}`}
           >
             {spotifyData?.song}
           </Link>
-          <span className="text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left">{`by ${spotifyData?.artist}`}</span>
+          <span className="text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 text-left truncate">{`by ${spotifyData?.artist}`}</span>
         </div>
         <div className="flex flex-col w-full">
           <ProgressBar

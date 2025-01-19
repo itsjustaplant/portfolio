@@ -1,0 +1,9 @@
+---
+import SectionWrapper from "../components/SectionWrapper.astro";
+
+import NowPlaying from "../components/NowPlaying";
+---
+
+<SectionWrapper delay={3}>
+  <NowPlaying client:load />
+</SectionWrapper>

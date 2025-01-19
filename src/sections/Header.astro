@@ -32,16 +32,16 @@ const activePath = Astro.url.pathname;
               <Link
                 href={href}
                 target="_self"
-                className={`flex ${activePath === href ? "decoration-green" : "decoration-white"}`}
                 showIcon={false}
+                showHoverEffects={false}
               >
                 <span
-                  class={`leading-4 ${activePath === href ? "text-green" : "text-white"}`}
+                  class={`leading-4 p-2 rounded hover:bg-off-white hover:!no-underline ${activePath === href ? "text-white underline" : "text-silver"}`}
                 >
                   {text}
                 </span>
               </Link>
-              {index !== Routes.length - 1 && <span class="text-white">/</span>}
+              {index !== Routes.length - 1 && <span class="text-white">|</span>}
             </>
           ))}
         </div>

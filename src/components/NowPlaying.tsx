@@ -18,36 +18,7 @@ const defaultNowPlayingData = {
 };
 
 const NowPlaying = () => {
-  const data = useLanyardWS("368500476209004546");
-  const [spotifyData, setSpotifyData] = useState<Spotify>(
-    defaultNowPlayingData,
-  );
-
-  useEffect(() => {
-    const { spotify } = data || {};
-    setSpotifyData(spotify || defaultNowPlayingData);
-  }, [data]);
-
-  // i better sleep
-  // here is quick reminder for you plant :: this allows you to render skeleton loader if data is not present, we set the default data on effect for skeleton
-  if (!data) {
-    return (
-      <div className="my-4 p-2 rounded-md border-none bg-dark-eerie-black flex gap-3 shadow-dark transition-all duration-300 hover:shadow-light">
-        <div className="h-20 min-w-20 rounded-md animate-skeleton">
-          <img className="hidden" alt={`Skeleton image}`} />
-        </div>
-        <div className="flex flex-col w-full py-1 gap-2">
-          <div className="flex flex-col gap-1">
-            <span className="animate-skeleton text-md text-white min-h-5 leading-5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left"></span>
-            <span className="animate-skeleton text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 whitespace-nowrap overflow-hidden text-ellipsis text-left"></span>
-          </div>
-          <div className="flex flex-col w-full h-full justify-center">
-            <div className="animate-skeleton w-full h-full" />
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const spotifyData = useLanyardWS("368500476209004546")?.spotify || defaultNowPlayingData;
 
   return (
     <div className="my-4 p-2 rounded-md border-none bg-dark-eerie-black flex gap-3 shadow-dark transition-all duration-300 hover:shadow-light">

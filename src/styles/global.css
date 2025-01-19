@@ -1,19 +1,30 @@
 @tailwind base;
 @tailwind components;
 
-html {
-  font-family: system-ui, sans-serif;
+/* ia-writer-quattro-latin-400-normal */
+@font-face {
+  font-family: 'iA Writer Quattro';
+  font-style: normal;
+  font-display: fallback;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff) format('woff');
+}
+
+/* ia-writer-quattro-latin-700-normal */
+@font-face {
+  font-family: 'iA Writer Quattro';
+  font-style: normal;
+  font-display: fallback;
+  font-weight: 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.woff) format('woff');
 }
 
 body {
-  font-display: swap;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  font-family: Inter, sans-serif;
-  font-feature-settings:
-    "liga" 1,
-    "calt" 1;
-  /* fix for Chrome */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  font-family: iA Writer Quattro;
 }
 
 ::-webkit-scrollbar {
@@ -21,8 +32,10 @@ body {
 }
 
 main {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 p {
@@ -35,4 +48,13 @@ figure {
   @apply: shadow-dark;
   @apply: m-0;
   @apply: font-md;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

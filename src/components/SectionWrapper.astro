@@ -5,12 +5,29 @@ interface Props {
   title?: string;
   applyMargin?: boolean;
   className?: string;
+  id?: string;
+  delay?: number;
 }
 
-const { title, applyMargin = true, className = "" } = Astro.props;
+const {
+  title,
+  applyMargin = true,
+  className = "",
+  id,
+  delay = 1,
+} = Astro.props;
 ---
 
-<div class={`${applyMargin ? "mt-4" : "mt-0"} ${className}`}>
+<div
+  class={`${applyMargin ? "mt-4" : "mt-0"} ${className}`}
+  style={`--delay: ${delay}s`}
+>
   {title && <SectionHeader title={title} />}
   <slot />
 </div>
+
+<style>
+  div {
+    animation: fade-in var(--delay) ease-in-out;
+  }
+</style>

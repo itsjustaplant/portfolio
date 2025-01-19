@@ -49,3 +49,12 @@ figure {
   @apply: m-0;
   @apply: font-md;
 }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -6,8 +6,7 @@ import Experience from "../sections/Experience.astro";
 import Education from "../sections/Education.astro";
 import Contact from "../sections/Contact.astro";
 import Skill from "../sections/Skill.astro";
-
-import NowPlaying from "../components/NowPlaying";
+import NowPlayingSection from "../sections/NowPlayingSection.astro";
 ---
 
 <Layout>
@@ -16,5 +15,5 @@ import NowPlaying from "../components/NowPlaying";
   <Education />
   <Skill />
   <Contact />
-  <NowPlaying client:load />
+  <NowPlayingSection />
 </Layout>

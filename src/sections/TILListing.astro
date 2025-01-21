@@ -10,9 +10,6 @@ const data = await getCollection("til");
 const sanitizedTILData = await Promise.all(
   data?.map(async ({ slug, data }) => ({ ...data, slug }))
 );
-for (let i = 0; i < 4; i++) {
-  sanitizedTILData.push(sanitizedTILData[0]);
-}
 ---
 
 <SectionWrapper
@@ -22,12 +19,19 @@ for (let i = 0; i < 4; i++) {
   <List>
     {
       sanitizedTILData.map(({ title, slug, date }) => (
-        <li class="flex w-full items-center py-1 border-b border-primary">
-          <Link href={`/til/${slug}`} target="_self" showIcon={false}>
-            {title}
-          </Link>
-          <span class="text-secondary text-sm ml-auto">{date}</span>
-        </li>
+        <>
+          <li class="flex gap-6 w-full items-center py-1 overflow-hidden">
+            <span class="text-secondary text-md">{date}</span>
+            <Link
+              className="truncate"
+              href={`/til/${slug}`}
+              target="_self"
+              showIcon={false}
+            >
+              {title}
+            </Link>
+          </li>
+        </>
       ))
     }
   </List>

@@ -11,7 +11,7 @@ export default {
         primary: "#333333",
         secondary: "#151515",
         tertiary: "#252525",
-        "tertiary-30": "#2525254d"
+        "tertiary-30": "#25252566"
       },
       borderColor: {
         primary: "#FFFFFF1A",
@@ -34,7 +34,7 @@ export default {
         boxes:
           "linear-gradient(rgb(27, 27, 27) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(to right, rgb(27, 27, 27) 1px, rgb(17, 17, 17) 1px)",
         overlay:
-          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 0.5) 10%)",
+          "linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(11, 11, 11, 0.75) 25%)",
       },
     },
   },

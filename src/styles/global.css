@@ -10,15 +10,6 @@
   src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff) format('woff');
 }
 
-/* ia-writer-quattro-latin-700-normal */
-@font-face {
-  font-family: 'iA Writer Quattro';
-  font-style: normal;
-  font-display: fallback;
-  font-weight: 700;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.woff) format('woff');
-}
-
 body {
   -ms-overflow-style: none;
   /* IE and Edge */
@@ -38,7 +29,8 @@ main {
   /* Firefox */
   @apply m-auto;
   @apply max-w-3xl;
-  @apply p-3;
+  @apply px-3;
+  @apply py-6
 }
 
 h1 {

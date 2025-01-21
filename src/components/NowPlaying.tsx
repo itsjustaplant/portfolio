@@ -4,8 +4,8 @@ import ProgressBar from "./ProgressBar";
 import Link from "./Link";
 
 const defaultNowPlayingData = {
-  song: "Pinegrove",
-  artist: "Angelina",
+  song: "Angelina",
+  artist: "Pinegrove",
   album_art_url:
     "https://i.scdn.co/image/ab67616d0000b2734e48dddf8b7fa7f224015588",
   timestamps: {

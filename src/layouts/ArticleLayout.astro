@@ -2,9 +2,8 @@
 import BaseHead from "../components/BaseHead.astro";
 import Body from "../components/Body.astro";
 import Header from "../sections/Header.astro";
-import Main from "../components/Main.astro";
 
-import "../styles/prism.css"
+import "../styles/prism.css";
 
 const {
   frontmatter: { title, description, date },
@@ -16,12 +15,12 @@ const {
   <BaseHead title={`justaplant | ${title}`} description={description} />
   <Body>
     <Header />
-    <Main>
-      <h1 class="text-white text-lg font-normal mb-1">{title}</h1>
-      <span class="text-silver text-sm">{date}</span>
+    <main>
+      <h1 class="text-primary text-lg font-normal mb-1">{title}</h1>
+      <span class="text-secondary text-sm">{date}</span>
       <article class="mt-8">
         <slot />
       </article>
-    </Main>
+    </main>
   </Body>
 </html>

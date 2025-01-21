@@ -20,7 +20,7 @@ const NowPlaying = () => {
   const spotifyData = useLanyardWS("368500476209004546")?.spotify || defaultNowPlayingData;
 
   return (
-    <div className="my-4 p-2 rounded-md border-none bg-dark-eerie-black flex gap-3 shadow-dark transition-all duration-300 hover:shadow-light">
+    <div className="my-4 p-2 rounded-md border-none bg-secondary flex gap-3 shadow-secondary transition-all duration-300 hover:shadow-primary">
       <div className="h-20 min-w-20 rounded-md">
         <img
           className="w-20 h-20 rounded-md"
@@ -33,13 +33,13 @@ const NowPlaying = () => {
       <div className="flex flex-col w-full py-1 gap-2 overflow-hidden">
         <div className="flex flex-col gap-1">
           <Link
-            className="text-md text-white min-h-5 text-left truncate"
+            className="text-md text-primary min-h-5 text-left truncate"
             showIcon={false}
             href={`https://open.spotify.com/track/${spotifyData?.track_id}`}
           >
             {spotifyData?.song}
           </Link>
-          <span className="text-silver text-sm min-h-4 leading-4 -mt-0.5 max-w-60 text-left truncate">{`by ${spotifyData?.artist}`}</span>
+          <span className="text-secondary text-sm min-h-4 leading-4 -mt-0.5 max-w-60 text-left truncate">{`by ${spotifyData?.artist}`}</span>
         </div>
         <div className="flex flex-col w-full">
           <ProgressBar

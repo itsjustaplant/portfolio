@@ -1,28 +1,21 @@
 ---
-import SectionHeader from "./SectionHeader.astro";
-
 interface Props {
-  title?: string;
   applyMargin?: boolean;
   className?: string;
-  id?: string;
   delay?: number;
 }
 
-const {
-  title,
-  applyMargin = true,
-  className = "",
-  id,
-  delay = 1,
-} = Astro.props;
+const { applyMargin = true, className = "", delay = 1 } = Astro.props;
+
+const hasTitle = Astro.slots.has("title");
 ---
 
 <div
   class={`${applyMargin ? "mt-4" : "mt-0"} ${className}`}
   style={`--delay: ${delay}s`}
 >
-  {title && <SectionHeader title={title} />}
+  {}
+  {hasTitle && <slot name="title" />}
   <slot />
 </div>
 

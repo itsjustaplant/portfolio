@@ -1,14 +1,11 @@
 ---
 import SectionWrapper from "../components/SectionWrapper.astro";
-import PageHeader from "../components/PageHeader.astro";
-import Paragraph from "../components/Paragraph.astro";
 ---
 
-<SectionWrapper applyMargin={false}>
-  <PageHeader>T.I.L</PageHeader>
-  <Paragraph> Welcome to my learning journey! </Paragraph>
-  <Paragraph className="mt-1">
+<SectionWrapper applyMargin={false} delay={0.5}>
+  <h1>Today I Learned...</h1>
+  <p>
     I've curated a collection of insights and knowledge that I've learned each
     day.
-  </Paragraph>
+  </p>
 </SectionWrapper>

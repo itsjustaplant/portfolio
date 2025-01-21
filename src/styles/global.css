@@ -36,16 +36,33 @@ main {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+  @apply m-auto;
+  @apply max-w-3xl;
+  @apply p-3;
+}
+
+h1 {
+  @apply text-primary;
+  @apply text-lg;
+  @apply font-normal;
+  @apply mb-1;
+}
+
+h2{
+  @apply text-primary;
+  @apply text-md;
+  @apply font-normal;
+  @apply mb-1;
 }
 
 p {
   @apply m-0;
-  @apply text-silver;
+  @apply text-secondary;
   @apply text-md;
 }
 
 figure {
-  @apply: shadow-dark;
+  @apply: shadow-secondary;
   @apply: m-0;
   @apply: font-md;
 }

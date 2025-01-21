@@ -1,11 +1,7 @@
 ---
-export interface Props {
-  text: string;
-}
 
-const { text } = Astro.props;
 ---
 
-<span class="text-md text-silver min-w-32">
-  {text}
+<span class="text-md text-secondary min-w-32">
+  <slot />
 </span>

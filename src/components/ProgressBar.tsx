@@ -59,13 +59,13 @@ const ProgressBar = (props: PropsType) => {
 
   return (
     <div className="flex flex-col justify-center gap-0.5">
-      <div className="w-full bg-jet rounded-full h-1.5 dark:bg-gray-700">
+      <div className="w-full bg-primary rounded-full h-1.5">
         <div
           className="bg-white h-1.5 rounded-full"
           style={{ width: `${percent}%` }}
         ></div>
       </div>
-      <div className="flex flex-row justify-between text-white text-xs w-full my-px">
+      <div className="flex flex-row justify-between text-primary text-xs w-full my-px">
         <span>{currentTimer}</span>
         <span>{endTimer}</span>
       </div>

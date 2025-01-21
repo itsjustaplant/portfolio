@@ -4,27 +4,31 @@ import { getCollection } from "astro:content";
 import SectionWrapper from "../components/SectionWrapper.astro";
 
 import Link from "../components/Link";
-import Paragraph from "../components/Paragraph.astro";
-import Chip from "../components/Chip.astro";
+import List from "../components/List.astro";
 
 const data = await getCollection("til");
 const sanitizedTILData = await Promise.all(
-  data?.map(async ({ slug, data }) => ({ ...data, slug })),
+  data?.map(async ({ slug, data }) => ({ ...data, slug }))
 );
+for (let i = 0; i < 4; i++) {
+  sanitizedTILData.push(sanitizedTILData[0]);
+}
 ---
 
-<SectionWrapper className="flex flex-col justify-center gap-4 mt-8 w-full">
-  {
-    sanitizedTILData.map(({ title, description, slug, date }) => (
-      <Chip>
-        <div class="flex w-full justify-between items-center">
-          <Link href={`/til/${slug}`} target="_self">
+<SectionWrapper
+  className="flex flex-col justify-center gap-4 mt-8 w-full"
+  delay={1}
+>
+  <List>
+    {
+      sanitizedTILData.map(({ title, slug, date }) => (
+        <li class="flex w-full items-center py-1 border-b border-primary">
+          <Link href={`/til/${slug}`} target="_self" showIcon={false}>
             {title}
           </Link>
-          <span class="text-silver text-sm">{date}</span>
-        </div>
-        <Paragraph>{description}</Paragraph>
-      </Chip>
-    ))
-  }
+          <span class="text-secondary text-sm ml-auto">{date}</span>
+        </li>
+      ))
+    }
+  </List>
 </SectionWrapper>

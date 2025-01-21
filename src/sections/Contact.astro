@@ -1,6 +1,7 @@
 ---
 import SectionWrapper from "../components/SectionWrapper.astro";
-import ContactFragment from "../components/ContactFragment.astro";
+import SubHeader from "../components/SubHeader.astro";
+import Link from "../components/Link";
 
 const ContactData = [
   {
@@ -26,16 +27,18 @@ const ContactData = [
 ];
 ---
 
-<SectionWrapper title="Contact" delay={1.5}>
-  <div>
-    {
-      ContactData.map((con) => (
-        <ContactFragment
-          website={con.website}
-          text={con.text}
-          link={con.link}
-        />
-      ))
-    }
-  </div>
+<SectionWrapper delay={1.5}>
+  <Fragment>
+    <h2>Contact</h2>
+    <div>
+      {
+        ContactData.map(({ website, text, link }) => (
+          <div class="flex">
+            <SubHeader>{website}</SubHeader>
+            <Link href={link}>{text}</Link>
+          </div>
+        ))
+      }
+    </div>
+  </Fragment>
 </SectionWrapper>

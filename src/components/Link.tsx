@@ -17,7 +17,7 @@ const Link = (props: Props) => {
 
   return (
     <a
-      className={`text-white text-${size} no-underline cursor-pointer hover:underline ${className}`}
+      className={`text-primary text-${size} no-underline cursor-pointer hover:underline ${className}`}
       href={href}
       target={target}
     >

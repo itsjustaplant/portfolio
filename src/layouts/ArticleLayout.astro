@@ -1,24 +1,17 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
 import Body from "../components/Body.astro";
-import Header from "../sections/Header.astro";
-
-import "../styles/prism.css";
-
-const {
-  frontmatter: { title, description, date },
-} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <BaseHead title={`justaplant | ${title}`} description={description} />
+  <slot name="basehead" />
   <Body>
-    <Header />
+    <slot name="header" />
+    <slot name="cover" />
     <main>
-      <h1 class="text-primary text-lg mb-1">{title}</h1>
-      <span class="text-secondary text-sm">{date}</span>
-      <article class="mt-8">
+      <slot name="title" />
+      <slot name="tags" />
+      <article class="my-8">
         <slot />
       </article>
     </main>

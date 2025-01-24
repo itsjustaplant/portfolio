@@ -18,21 +18,23 @@ const sanitizedTILData = await Promise.all(
 >
   <List>
     {
-      sanitizedTILData.map(({ title, slug, date }) => (
-        <>
-          <li class="flex gap-6 w-full items-center py-1 overflow-hidden">
-            <span class="text-secondary text-md">{date}</span>
-            <Link
-              className="truncate"
-              href={`/til/${slug}`}
-              target="_self"
-              showIcon={false}
-            >
-              {title}
-            </Link>
-          </li>
-        </>
-      ))
+      sanitizedTILData
+        .filter(({ published }) => published)
+        .map(({ title, slug, date }) => (
+          <>
+            <li class="flex gap-6 w-full items-start py-1 overflow-hidden">
+              <span class="text-secondary text-md">{date}</span>
+              <Link
+                className=""
+                href={`/til/${slug}`}
+                target="_self"
+                showIcon={false}
+              >
+                {title}
+              </Link>
+            </li>
+          </>
+        ))
     }
   </List>
 </SectionWrapper>

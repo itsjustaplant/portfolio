@@ -1,5 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../sections/Header.astro";
+
+import "../../styles/prism.css";
+import "../../styles/article.css";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("til");
@@ -10,7 +19,35 @@ export const getStaticPaths = async () => {
 };
 
 const { post } = Astro.props;
+const { title, description, date, tags } = post.data;
 const { Content } = await post.render();
 ---
 
-<Content />
+<ArticleLayout>
+  <BaseHead
+    slot="basehead"
+    title={`justaplant | ${title}`}
+    description={description}
+  />
+  <Header slot="header" />
+  <Image
+    loading="lazy"
+    src={post.data.cover}
+    alt={post.data.coverAlt}
+    slot="cover"
+  />
+  <h1 class="text-primary text-lg mb-1" slot="title">{title}</h1>
+  <div class="flex items-center" slot="tags">
+    <span class="text-secondary text-sm">{date}</span>
+    <div class="flex ml-auto gap-1">
+      {
+        (tags as string[]).map((tag) => (
+          <span class="text-black text-sm font-bold rounded-md bg-neutral px-1 py-0.5">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+  <Content />
+</ArticleLayout>

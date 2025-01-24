@@ -1,0 +1,25 @@
+---
+title: "Javascript assignment operator returns the assigned value"
+description: "Just realized"
+date: "20.01.2025"
+published: true
+tags: ['Javascript', 'Stencil']
+cover: './1937.1039 - The Herring Net.jpg'
+coverAlt: 'Painting of two fishermen in small wooden boat on rocky seas.'
+---
+import Link from '../../../components/Link';
+
+While working on [Stencil](https://github.com/ionic-team/stencil/tree/main), i discovered that Javascript's assignment operator returns the assigned value. This behaviour allows us to reuse the result of the a function multiple times within a single line of code.
+
+```ts
+const slotName = (newChild['s-sn'] = getSlotName(newChild));
+```
+<p class="italic">You can view the whole code in [GitHub](https://github.com/ionic-team/stencil/blob/a7d38735a8572303fa2ea7e154e9a9dc3bf7eecb/src/runtime/dom-extras.ts#L255)</p>
+
+In this code, we assign the return value of `getSlotName` to `slotName` and `'s-sn'` property of `newChild`.
+
+After writing JS for few years, i almost forgot this thing and never used it before.
+
+Is it good for readability, dx, efficiency? I am not sure... but it is fun to discover a little aspect of assignment operator.
+
+<Link className='italic' href='https://devdocs.io/javascript/operators/assignment'>Official Docs</Link>

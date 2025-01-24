@@ -35,7 +35,7 @@ pre {
 
 code:not(.language-ts) {
   background-color: #1d1f21;
-  padding: 4px;
+  padding: 1px 4px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -43,7 +43,6 @@ code:not(.language-ts) {
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
-  margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.3em;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-interface PropsType {
+interface IProps {
   end: number;
   start: number;
 }
@@ -19,7 +19,7 @@ const getProgress = (indicator: number, length: number): number => {
   return (indicator / length) * 100;
 };
 
-const ProgressBar = (props: PropsType) => {
+const ProgressBar = (props: IProps) => {
   const { start, end } = props;
   const interval = useRef<NodeJS.Timeout>();
 

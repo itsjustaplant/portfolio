@@ -6,6 +6,7 @@ import ArticleLayout from "../../layouts/ArticleLayout.astro";
 
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../sections/Header.astro";
+import LikeButton from "../../components/LikeButton";
 
 import "../../styles/prism.css";
 import "../../styles/article.css";
@@ -42,7 +43,7 @@ const { Content } = await post.render();
     <div class="flex ml-auto gap-1">
       {
         (tags as string[]).map((tag) => (
-          <span class="text-black text-sm font-bold rounded-md bg-neutral px-1 py-0.5">
+          <span class="text-black text-sm font-bold rounded-md bg-neutral px-2 py-1">
             {tag}
           </span>
         ))
@@ -50,4 +51,7 @@ const { Content } = await post.render();
     </div>
   </div>
   <Content />
+  <div slot="footer">
+    <LikeButton client:load slug={post.slug} />
+  </div>
 </ArticleLayout>

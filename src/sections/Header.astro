@@ -3,10 +3,6 @@ import Link from "../components/Link";
 
 const Routes = [
   {
-    href: "/",
-    text: "Home",
-  },
-  {
     href: "/til",
     text: "T.I.L",
   },
@@ -35,12 +31,11 @@ const activePath = Astro.url.pathname;
               className="hover:!no-underline "
             >
               <span
-                class={`leading-4 p-2 rounded text-primary ${activePath === href ? "bg-tertiary-30" : "hover:bg-tertiary"}`}
+                class={`leading-4 p-2 rounded hover:shadow-primary transition-all text-primary ${activePath === href ? "bg-tertiary" : "hover:bg-tertiary-30"}`}
               >
                 {text}
               </span>
             </Link>
-            {index !== Routes.length - 1 && <span class="text-primary">|</span>}
           </>
         ))
       }

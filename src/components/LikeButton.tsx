@@ -36,7 +36,7 @@ const LikeButton = (props: IProps) => {
   }, []);
 
   return (
-    <div className="ml-auo flex gap-1.5 text-primary rounded-md">
+    <div className="flex items-center gap-1.5 text-primary rounded-md">
       {isLoading ? (
         <svg
           className="animate-spin"

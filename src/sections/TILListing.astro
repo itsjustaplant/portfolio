@@ -4,7 +4,6 @@ import { getCollection } from "astro:content";
 import SectionWrapper from "../components/SectionWrapper.astro";
 
 import Link from "../components/Link";
-import List from "../components/List.astro";
 
 const data = await getCollection("til");
 const sanitizedTILData = await Promise.all(
@@ -16,7 +15,7 @@ const sanitizedTILData = await Promise.all(
   className="flex flex-col justify-center gap-4 mt-8 w-full"
   delay={1}
 >
-  <List>
+  <ul>
     {
       sanitizedTILData
         .filter(({ published }) => published)
@@ -36,5 +35,5 @@ const sanitizedTILData = await Promise.all(
           </>
         ))
     }
-  </List>
+  </ul>
 </SectionWrapper>

@@ -1,44 +1,58 @@
 ---
 import Link from "../components/Link";
-
-const Routes = [
-  {
-    href: "/til",
-    text: "T.I.L",
-  },
-];
+import HomeplantIcon from "../icons/homeplant.svg";
+import BackIcon from "../icons/back.svg";
 
 const activePath = Astro.url.pathname;
+const isBlogPost = activePath.includes("/til/");
+const ROUTES = [
+  {
+    href: "/",
+    text: "justaplant",
+  },
+  {
+    href: isBlogPost ? activePath : "/til",
+    text: isBlogPost ? "[post]" : "T.I.L",
+  },
+];
 ---
 
-<header class="mt-0 ml-auto mr-auto max-w-3xl p-3">
-  <div class="flex justify-between items-center">
+<header class="mx-auto mb-6 max-w-xl px-3 sticky top-3 self-center">
+  <div class="flex justify-between items-center px-3 bg-secondary rounded-md">
     <Link
-      href="/"
+      href={isBlogPost ? "/til" : "/"}
       target="_self"
       className="font-medium my-3"
       size="lg"
-      showIcon={false}>justaplant</Link
+      showIcon={false}
     >
-    <div class="flex justify-center items-center gap-2">
-      {
-        Routes.map(({ href, text }, index) => (
-          <>
-            <Link
-              href={href}
-              target="_self"
-              showIcon={false}
-              className="hover:!no-underline "
-            >
-              <span
-                class={`leading-4 p-2 rounded hover:shadow-primary transition-all text-primary ${activePath === href ? "bg-tertiary" : "hover:bg-tertiary-30"}`}
+      <img
+        class={`w-8 h-8 ${isBlogPost ? "rotate-180" : ""}`}
+        src={isBlogPost ? BackIcon.src : HomeplantIcon.src}
+        alt="home plant"
+      />
+    </Link>
+    <div class="flex justify-center items-center gap-2 right-0 relative">
+      <div class="flex w-full absolute justify-end">
+        {
+          ROUTES.map(({ href, text }) => (
+            <>
+              <Link
+                href={href}
+                target="_self"
+                showIcon={false}
+                className="hover:no-underline"
               >
-                {text}
-              </span>
-            </Link>
-          </>
-        ))
-      }
+                <span
+                  class={`p-2 rounded transition-all z-10 hover:text-primary ${activePath === href ? "bg-tertiary text-primary" : "text-secondary"}`}
+                >
+                  {text}
+                </span>
+              </Link>
+            </>
+          ))
+        }
+      </div>
     </div>
   </div>
 </header>

@@ -3,11 +3,15 @@
 
 /* ia-writer-quattro-latin-400-normal */
 @font-face {
-  font-family: 'iA Writer Quattro';
+  font-family: "iA Writer Quattro";
   font-style: normal;
   font-display: fallback;
   font-weight: 400;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff) format('woff');
+  src:
+    url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.woff)
+      format("woff");
 }
 
 body {
@@ -30,7 +34,7 @@ main {
   @apply m-auto;
   @apply max-w-3xl;
   @apply px-3;
-  @apply py-6
+  @apply py-6;
 }
 
 h1 {
@@ -40,7 +44,7 @@ h1 {
   @apply mb-1;
 }
 
-h2{
+h2 {
   @apply text-primary;
   @apply text-md;
   @apply font-normal;
@@ -67,3 +71,28 @@ figure {
     opacity: 1;
   }
 }
+
+/* @keyframes grow {
+  0% {
+    top: 12px;
+    margin: 12px;
+  }
+
+  100% {
+    top: 0;
+    margin: 12px 0;
+    border-radius: 0;
+  }
+}
+
+@scroll-timeline --scroll-effect {
+  source: auto;
+  start: 0px;
+  end: 2px;
+}
+
+header {
+  animation: grow linear;
+  animation-timeline: scroll();
+  animation-range: 0% 100%;
+} */

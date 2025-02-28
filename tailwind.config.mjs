@@ -11,7 +11,6 @@ export default {
         primary: "#333333",
         secondary: "#151515",
         tertiary: "#252525",
-        "tertiary-30": "#25252566",
         neutral: "#FFF7D6"
       },
       borderColor: {

@@ -17,7 +17,8 @@ const defaultNowPlayingData = {
 };
 
 const NowPlaying = () => {
-  const spotifyData = useLanyardWS("368500476209004546")?.spotify || defaultNowPlayingData;
+  const spotifyData =
+    useLanyardWS("368500476209004546")?.spotify || defaultNowPlayingData;
 
   return (
     <div className="my-4 p-2 rounded-md border-none bg-secondary flex gap-3 shadow-secondary transition-all duration-300 hover:shadow-primary">
@@ -30,7 +31,7 @@ const NowPlaying = () => {
           alt={`Cover art of ${spotifyData?.song} by ${spotifyData?.artist}`}
         />
       </div>
-      <div className="flex flex-col w-full py-1 gap-2 overflow-hidden">
+      <div className="flex flex-col justify-center w-full py-1 gap-2 overflow-hidden">
         <div className="flex flex-col gap-1">
           <Link
             className="text-md text-primary min-h-5 text-left truncate"
@@ -39,7 +40,9 @@ const NowPlaying = () => {
           >
             {spotifyData?.song}
           </Link>
-          <span className="text-secondary text-sm min-h-4 leading-4 -mt-0.5 max-w-60 text-left truncate">{`by ${spotifyData?.artist}`}</span>
+          {spotifyData?.artist && (
+            <span className="text-secondary text-sm min-h-4 leading-4 -mt-0.5 max-w-60 text-left truncate">{`by ${spotifyData?.artist}`}</span>
+          )}
         </div>
         <div className="flex flex-col w-full">
           <ProgressBar

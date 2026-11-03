@@ -1,0 +1,311 @@
+<div
+  class="sunflower"
+  role="img"
+  aria-label="A dithered sunflower swaying slowly among grasses"
+>
+  <canvas aria-hidden="true"></canvas>
+</div>
+
+<script>
+  function mountSunflower(container: HTMLElement) {
+    const canvas = container.querySelector("canvas")!;
+    const outputContext = canvas.getContext("2d");
+    const scene = document.createElement("canvas");
+    const sceneContext = scene.getContext("2d", { willReadFrequently: true });
+    if (!outputContext || !sceneContext) return () => {};
+    const output = outputContext,
+      ctx = sceneContext;
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const bayer = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+    const cell = 1.5;
+    let width = 0,
+      height = 0,
+      elapsed = 0,
+      lastTime = 0,
+      lastDraw = 0,
+      animation = 0;
+    let visible = false;
+    type Grass = {
+      x: number;
+      height: number;
+      lean: number;
+      phase: number;
+      width: number;
+      layer: number;
+    };
+    let grasses: Grass[] = [];
+
+    function populateGrasses() {
+      let seed = 63;
+      const random = () => {
+        seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+        return seed / 4294967296;
+      };
+      grasses = [];
+      for (let layer = 0; layer < 2; layer++) {
+        const count = Math.ceil(width / 5);
+        for (let i = 0; i < count; i++) {
+          const x = (i / count) * width + random() * 6;
+          const distance = Math.abs(x - width / 2) / width;
+          const clearing = 0.4 + 0.6 * Math.min(1, distance * 5);
+          grasses.push({
+            x,
+            height: height * (0.2 + random() * 0.45) * clearing,
+            lean: (random() - 0.5) * 30,
+            phase: random() * Math.PI * 2,
+            width: 1 + random() * 2.3,
+            layer,
+          });
+        }
+      }
+    }
+
+    function drawGrasses() {
+      for (const grass of grasses) {
+        const { x, height: h, lean, phase, width: w, layer } = grass;
+        const breeze = motion.matches
+          ? 0
+          : Math.sin(elapsed * 0.45 + phase) * 6;
+        const tip = x + lean + breeze;
+        ctx.fillStyle = layer === 0 ? "#1c223b" : "#333d55";
+        ctx.beginPath();
+        ctx.moveTo(x - w / 2, height + 2);
+        ctx.bezierCurveTo(
+          x - w,
+          height - h * 0.45,
+          tip - lean * 0.2,
+          height - h * 0.8,
+          tip,
+          height - h,
+        );
+        ctx.bezierCurveTo(
+          tip,
+          height - h * 0.6,
+          x + w,
+          height - h * 0.25,
+          x + w / 2,
+          height + 2,
+        );
+        ctx.fill();
+        if (phase > 5.6) {
+          ctx.beginPath();
+          ctx.ellipse(
+            tip,
+            height - h + 7,
+            2.5,
+            10,
+            (lean + breeze) / 100,
+            0,
+            Math.PI * 2,
+          );
+          ctx.fill();
+        }
+      }
+    }
+
+    function leaf(x: number, y: number, length: number, angle: number) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      const shade = ctx.createLinearGradient(0, -24, 0, 24);
+      shade.addColorStop(0, "#414b6a");
+      shade.addColorStop(1, "#171e35");
+      ctx.fillStyle = shade;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(length * 0.28, -44, length * 0.72, -37, length, 0);
+      ctx.bezierCurveTo(length * 0.65, 12, length * 0.24, 34, 0, 0);
+      ctx.fill();
+      ctx.strokeStyle = "#4b5272";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(length * 0.55, -4, length, 0);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      drawGrasses();
+      ctx.save();
+      ctx.translate(width / 2, height + 14);
+      const scale = height / 360;
+      ctx.scale(scale, scale);
+      // Rotate around the root so the stem, leaves, and flower move together.
+      ctx.rotate(
+        motion.matches ? -0.025 : Math.sin(elapsed * 0.45) * 0.045 - 0.025,
+      );
+      ctx.strokeStyle = "#48536b";
+      ctx.lineWidth = 5;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(0, 10);
+      ctx.bezierCurveTo(-3, -70, 18, -140, 0, -228);
+      ctx.stroke();
+      leaf(3, -115, 121, -0.28);
+      leaf(5, -90, 108, Math.PI + 0.22);
+      leaf(0, -32, 108, 0.14);
+
+      ctx.translate(0, -232);
+      ctx.rotate(
+        -0.2 + (motion.matches ? 0 : Math.sin(elapsed * 0.45 + 0.6) * 0.035),
+      );
+      ctx.scale(1, 0.86);
+      for (let ring = 0; ring < 2; ring++) {
+        const count = ring === 0 ? 24 : 22;
+        for (let i = 0; i < count; i++) {
+          const angle = (i / count) * Math.PI * 2 + ring * 0.13;
+          const length = (ring === 0 ? 90 : 74) + Math.sin(i * 2.3) * 7;
+          ctx.save();
+          ctx.rotate(angle);
+          const shade = ctx.createLinearGradient(25, 0, length, 0);
+          shade.addColorStop(0, "#96703f");
+          shade.addColorStop(0.55, "#dfb477");
+          shade.addColorStop(1, "#8d6a43");
+          ctx.fillStyle = shade;
+          ctx.beginPath();
+          ctx.moveTo(24, -4);
+          ctx.bezierCurveTo(42, -10, length - 12, -12, length, -2);
+          ctx.bezierCurveTo(length - 18, 8, 42, 10, 24, 4);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      const disk = ctx.createRadialGradient(-9, -10, 1, 0, 0, 36);
+      disk.addColorStop(0, "#302827");
+      disk.addColorStop(0.8, "#6a543f");
+      disk.addColorStop(1, "#d0a363");
+      ctx.fillStyle = disk;
+      ctx.beginPath();
+      ctx.arc(0, 0, 36, 0, Math.PI * 2);
+      ctx.fill();
+      // Golden-angle seed spirals give the center its characteristic texture.
+      for (let i = 0; i < 520; i++) {
+        const radius = Math.sqrt(i / 520) * 33;
+        const angle = i * 2.399963;
+        ctx.fillStyle = i % 3 === 0 ? "#b79361" : "#382d2b";
+        ctx.beginPath();
+        ctx.ellipse(
+          Math.cos(angle) * radius,
+          Math.sin(angle) * radius,
+          0.85,
+          1.2,
+          angle,
+          0,
+          Math.PI * 2,
+        );
+        ctx.fill();
+      }
+      ctx.restore();
+
+      const pixels = ctx.getImageData(0, 0, scene.width, scene.height);
+      const data = pixels.data;
+      for (let y = 0; y < scene.height; y++) {
+        for (let x = 0; x < scene.width; x++) {
+          const i = (y * scene.width + x) * 4;
+          if (!data[i + 3]) continue;
+          const warm = data[i] > data[i + 2] * 1.2;
+          const cool = data[i + 2] > data[i] * 1.08;
+          const tone =
+            (data[i] * 0.2126 + data[i + 1] * 0.7152 + data[i + 2] * 0.0722) /
+            255;
+          const coverage = (Math.min(0.95, tone * 1.35) * data[i + 3]) / 255;
+          const threshold = (bayer[(y % 4) * 4 + (x % 4)] + 0.5) / 16;
+          data[i] = warm ? 218 : cool ? 79 : 232;
+          data[i + 1] = warm ? 180 : cool ? 87 : 232;
+          data[i + 2] = warm ? 127 : cool ? 127 : 232;
+          data[i + 3] = coverage > threshold ? 255 : 0;
+        }
+      }
+      ctx.putImageData(pixels, 0, 0);
+      output.clearRect(0, 0, width, height);
+      output.drawImage(scene, 0, 0, scene.width * cell, scene.height * cell);
+    }
+
+    function resize() {
+      const bounds = container.getBoundingClientRect();
+      width = bounds.width;
+      height = bounds.height;
+      const ratio = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      output.setTransform(ratio, 0, 0, ratio, 0, 0);
+      output.imageSmoothingEnabled = false;
+      scene.width = Math.ceil(width / cell);
+      scene.height = Math.ceil(height / cell);
+      ctx.setTransform(1 / cell, 0, 0, 1 / cell, 0, 0);
+      populateGrasses();
+      draw();
+    }
+    function tick(time: number) {
+      if (lastTime) elapsed += Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      if (time - lastDraw >= 1000 / 30) {
+        draw();
+        lastDraw = time;
+      }
+      animation = requestAnimationFrame(tick);
+    }
+    function updateMotion() {
+      cancelAnimationFrame(animation);
+      lastTime = 0;
+      lastDraw = 0;
+      if (visible && !document.hidden && !motion.matches)
+        animation = requestAnimationFrame(tick);
+      else draw();
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      updateMotion();
+    });
+    observer.observe(container);
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(container);
+    motion.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateMotion);
+    resize();
+    return () => {
+      cancelAnimationFrame(animation);
+      observer.disconnect();
+      resizeObserver.disconnect();
+      motion.removeEventListener("change", updateMotion);
+      document.removeEventListener("visibilitychange", updateMotion);
+    };
+  }
+  let dispose: (() => void) | undefined;
+  function initSunflower() {
+    dispose?.();
+    const container = document.querySelector<HTMLElement>(".sunflower");
+    dispose = container ? mountSunflower(container) : undefined;
+  }
+  document.addEventListener("astro:page-load", initSunflower);
+  document.addEventListener("astro:before-swap", () => {
+    dispose?.();
+    dispose = undefined;
+  });
+</script>
+
+<style>
+  .sunflower {
+    width: 100%;
+    height: 340px;
+    margin-bottom: 34px;
+    overflow: hidden;
+    background: var(--paper);
+    transform: translateY(120px);
+    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 600px) {
+    .sunflower {
+      height: 280px;
+      margin-bottom: 28px;
+    }
+  }
+</style>

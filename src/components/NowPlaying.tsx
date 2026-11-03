@@ -1,58 +1,29 @@
 import { useLanyardWS } from "use-lanyard";
-
+import { Stage } from "./stage-kit/stage";
+import { Window } from "./stage-kit/window";
 import ProgressBar from "./ProgressBar";
-import Link from "./Link";
+import './listening-room.css';
 
-const defaultNowPlayingData = {
-  song: "Angelina",
-  artist: "Pinegrove",
-  album_art_url:
-    "https://i.scdn.co/image/ab67616d0000b2734e48dddf8b7fa7f224015588",
-  timestamps: {
-    start: 0,
-    end: 0,
-  },
-  track_id: "7Dt26KoNRmZpzlVwMe6LSP",
-  album: "Everything So Far",
+const fallback = {
+  song: 'Angelina', artist: 'Pinegrove',
+  album_art_url: 'https://i.scdn.co/image/ab67616d0000b2734e48dddf8b7fa7f224015588',
+  timestamps: { start: 0, end: 0 }, track_id: '7Dt26KoNRmZpzlVwMe6LSP',
 };
-
-const NowPlaying = () => {
-  const spotifyData =
-    useLanyardWS("368500476209004546")?.spotify || defaultNowPlayingData;
-
-  return (
-    <div className="my-4 p-2 rounded-md border-none bg-secondary flex gap-3 shadow-secondary transition-all duration-300 hover:shadow-primary">
-      <div className="h-20 min-w-20 rounded-md">
-        <img
-          className="w-20 h-20 rounded-md"
-          src={
-            spotifyData?.album_art_url ?? defaultNowPlayingData.album_art_url
-          }
-          alt={`Cover art of ${spotifyData?.song} by ${spotifyData?.artist}`}
-        />
-      </div>
-      <div className="flex flex-col justify-center w-full py-1 gap-2 overflow-hidden">
-        <div className="flex flex-col gap-1">
-          <Link
-            className="text-md text-primary min-h-5 text-left truncate"
-            showIcon={false}
-            href={`https://open.spotify.com/track/${spotifyData?.track_id}`}
-          >
-            {spotifyData?.song}
-          </Link>
-          {spotifyData?.artist && (
-            <span className="text-secondary text-sm min-h-4 leading-4 -mt-0.5 max-w-60 text-left truncate">{`by ${spotifyData?.artist}`}</span>
-          )}
-        </div>
-        <div className="flex flex-col w-full">
-          <ProgressBar
-            start={spotifyData?.timestamps.start}
-            end={spotifyData?.timestamps.end}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default NowPlaying;
+export default function NowPlaying() {
+  const track = useLanyardWS('368500476209004546')?.spotify || fallback;
+  return <div className="listening-room">
+    <Stage width={360} height={340} compact={{below:360,width:330,height:340}} fill theme="dark" palette="mono">
+      {() => <>
+        <Window title="On repeat" lights="grey" className="listening-window">
+          <div className="record-content">
+            <a href={`https://open.spotify.com/track/${track.track_id}`} target="_blank" rel="noopener noreferrer" className="record-link" aria-label={`Listen to ${track.song} by ${track.artist} on Spotify`}>
+              <div className="record-art"><img src={track.album_art_url} alt={`Cover art of ${track.song} by ${track.artist}`} width="112" height="112" /><div className="vinyl" aria-hidden="true"><span /></div></div>
+              <div className="record-info"><span className="record-title">{track.song}</span><span className="record-artist">by {track.artist}</span></div>
+            </a>
+            <div className="record-progress"><ProgressBar start={track.timestamps.start} end={track.timestamps.end} /></div>
+          </div>
+        </Window>
+      </>}
+    </Stage>
+  </div>;
+}

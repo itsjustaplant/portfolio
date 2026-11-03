@@ -20,6 +20,7 @@ const Link = (props: Props) => {
       className={`text-primary text-${size} no-underline cursor-pointer hover:underline ${className}`}
       href={href}
       target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
       {props.children}
       {showIcon && (
@@ -28,7 +29,7 @@ const Link = (props: Props) => {
           xmlns="http://www.w3.org/2000/svg"
           width="12"
           height="12"
-          fill="#ffffff"
+          fill="currentColor"
           viewBox="0 0 256 256"
         >
           <path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"></path>

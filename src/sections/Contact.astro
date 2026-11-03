@@ -1,44 +1,24 @@
 ---
-import SectionWrapper from "../components/SectionWrapper.astro";
-import SubHeader from "../components/SubHeader.astro";
-import Link from "../components/Link";
-
-const ContactData = [
+const links = [
+  { label: "GitHub", href: "https://github.com/itsjustaplant" },
   {
-    website: "GitHub",
-    text: "itsjustaplant",
-    link: "https://github.com/itsjustaplant",
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/alperen-%C5%9Fahin-245bb413b",
   },
-  {
-    website: "LinkedIn",
-    text: "Alperen Şahin",
-    link: "https://linkedin.com/in/alperen-%C5%9Fahin-245bb413b",
-  },
-  {
-    website: "Twitter",
-    text: "@justa_plant",
-    link: "https://twitter.com/justa_plant",
-  },
-  {
-    website: "Soundcloud",
-    text: "@justaplant",
-    link: "https://soundcloud.com/justaplant",
-  },
+  { label: "Twitter", href: "https://twitter.com/justa_plant" },
+  { label: "SoundCloud", href: "https://soundcloud.com/justaplant" },
 ];
 ---
 
-<SectionWrapper delay={1.5}>
-  <Fragment>
-    <h2>Contact</h2>
-    <div>
-      {
-        ContactData.map(({ website, text, link }) => (
-          <div class="flex">
-            <SubHeader>{website}</SubHeader>
-            <Link href={link}>{text}</Link>
-          </div>
-        ))
-      }
-    </div>
-  </Fragment>
-</SectionWrapper>
+<footer class="contact">
+  <nav aria-label="Find me online">
+    {
+      links.map(({ label, href }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {label}
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))
+    }
+  </nav>
+</footer>

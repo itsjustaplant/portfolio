@@ -1,6 +1,4 @@
 ---
-import SectionWrapper from "../components/SectionWrapper.astro";
-import SubHeader from "../components/SubHeader.astro";
 import Link from "../components/Link";
 
 const EducationData = [
@@ -21,21 +19,14 @@ const EducationData = [
 ];
 ---
 
-<SectionWrapper delay={1.5}>
-  <Fragment>
-    <h2>Education</h2>
-    <div class="flex flex-col gap-4">
-      {
-        EducationData.map(({ date, text, link, description }) => (
-          <div class="flex">
-            <SubHeader>{date}</SubHeader>
-            <div class="flex flex-col">
-              <Link href={link}>{text}</Link>
-              <p>{description}</p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </Fragment>
-</SectionWrapper>
+<section class="resume-section" id="education" aria-labelledby="education-title">
+  <div class="section-heading"><span class="section-index">02 /</span><h2 id="education-title">Education</h2><span class="section-rule"></span></div>
+  <div class="resume-list">
+    {EducationData.map(({ date, text, link, description }, i) => (
+      <div class="resume-row">
+        <div class="resume-date"><span class={i === 0 && 'Education' === 'Experience' ? 'current-dot' : 'timeline-dot'}></span>{date}</div>
+        <div class="resume-content"><Link href={link} className="resume-title">{text}</Link><p>{description}</p></div>
+      </div>
+    ))}
+  </div>
+</section>

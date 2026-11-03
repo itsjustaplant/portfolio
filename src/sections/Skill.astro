@@ -1,5 +1,5 @@
 ---
-import SectionWrapper from "../components/SectionWrapper.astro";
+
 
 const Skills = [
   {
@@ -26,14 +26,8 @@ const Skills = [
 ];
 ---
 
-<SectionWrapper delay={1.5}>
-  <div class="flex flex-wrap gap-1.5">
-    {
-      Skills.map((skill) => (
-        <div class="text-md leading-[15px] rounded-md py-2.5 px-3 text-primary bg-secondary transition-all duration-300 hover:cursor-pointer shadow-secondary hover:shadow-primary">
-          {skill.text}
-        </div>
-      ))
-    }
-  </div>
-</SectionWrapper>
+<section class="skills-panel" aria-labelledby="skills-title">
+  <div class="panel-top"><h2 id="skills-title">The toolkit</h2><span>↗</span></div>
+  <div class="skill-tags">{Skills.map(skill => <span>{skill.text}</span>)}</div>
+  <div class="toolkit-bottom"><span class="small-cross">+</span><span>ALWAYS A WORK IN PROGRESS</span></div>
+</section>

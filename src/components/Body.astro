@@ -1,9 +1,8 @@
 ---
-
+import DitheredPlant from "./DitheredPlant.astro";
 ---
 
-<body class="p-0 m-0 bg-boxes bg-[length:120px_120px]">
-  <div class="w-full h-full bg-overlay min-h-screen">
-    <slot />
-  </div>
+<body>
+  <div class="site-shell"><slot /></div>
+  <DitheredPlant />
 </body>

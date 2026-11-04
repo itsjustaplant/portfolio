@@ -133,6 +133,62 @@ p {
 .contact a:hover {
   color: var(--strong);
 }
+@media (prefers-reduced-motion: no-preference) {
+  .corner-sun {
+    animation: opening-sun 650ms ease-out both;
+  }
+  .sunflower canvas,
+  .intro,
+  .contact h2,
+  .contact li {
+    animation: opening-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .sunflower canvas {
+    animation-delay: 100ms;
+  }
+  .intro {
+    animation-delay: 280ms;
+  }
+  .contact h2 {
+    animation-delay: 400ms;
+  }
+  .contact li {
+    animation-delay: 470ms;
+  }
+  .contact li:nth-child(2) {
+    animation-delay: 540ms;
+  }
+  .contact li:nth-child(3) {
+    animation-delay: 610ms;
+  }
+  .contact li:nth-child(4) {
+    animation-delay: 680ms;
+  }
+  .contact:focus-within h2,
+  .contact:focus-within li {
+    animation: none;
+  }
+}
+@keyframes opening-sun {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opening-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    translate: 0 -8px;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(-8px);
+    translate: 0 0;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .text-link {
     transition: none;

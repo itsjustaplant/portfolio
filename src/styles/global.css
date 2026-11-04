@@ -103,27 +103,23 @@ p {
   list-style: none;
 }
 .text-link {
-  padding-bottom: 3px;
-  background-image: linear-gradient(var(--strong), var(--strong)),
-    linear-gradient(
-      color-mix(in srgb, var(--ink) 25%, transparent),
-      color-mix(in srgb, var(--ink) 25%, transparent)
-    );
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  background-size:
-    0% 1px,
-    100% 1px;
-  transition:
-    background-size 220ms ease,
-    color 220ms ease;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  transition: color 180ms ease;
+}
+.link-arrow {
+  color: var(--muted);
+  font-size: 12px;
+  transition: color 180ms ease;
 }
 .text-link:hover,
 .text-link:focus-visible {
-  color: var(--strong);
-  background-size:
-    100% 1px,
-    100% 1px;
+  color: #f4c900;
+}
+.text-link:hover .link-arrow,
+.text-link:focus-visible .link-arrow {
+  color: #f4c900;
 }
 .contact a {
   font-size: 14px;
@@ -131,7 +127,7 @@ p {
   color: var(--ink);
 }
 .contact a:hover {
-  color: var(--strong);
+  color: #f4c900;
 }
 @media (prefers-reduced-motion: no-preference) {
   .corner-sun {
@@ -190,7 +186,8 @@ p {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .text-link {
+  .text-link,
+  .link-arrow {
     transition: none;
   }
 }

@@ -1,7 +1,7 @@
 <div
   class="sunflower"
   role="img"
-  aria-label="A dithered sunflower swaying slowly among grasses"
+  aria-label="A dithered sunflower facing the sun and swaying gently among grasses"
 >
   <canvas aria-hidden="true"></canvas>
 </div>
@@ -16,6 +16,7 @@
     const output = outputContext,
       ctx = sceneContext;
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    let towardSun = 0.25;
     const bayer = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
     const cell = 1.5;
     let width = 0,
@@ -133,15 +134,14 @@
       const scale = height / 360;
       ctx.scale(scale, scale);
       // Rotate around the root so the stem, leaves, and flower move together.
-      ctx.rotate(
-        motion.matches ? -0.025 : Math.sin(elapsed * 0.45) * 0.045 - 0.025,
-      );
+      const breeze = motion.matches ? 0 : Math.sin(elapsed * 0.45) * 0.025;
+      ctx.rotate(towardSun + breeze);
       ctx.strokeStyle = "#48536b";
       ctx.lineWidth = 5;
       ctx.lineCap = "round";
       ctx.beginPath();
       ctx.moveTo(0, 10);
-      ctx.bezierCurveTo(-3, -70, 18, -140, 0, -228);
+      ctx.bezierCurveTo(-3, -70, 35, -205, 0, -232);
       ctx.stroke();
       leaf(3, -115, 121, -0.28);
       leaf(5, -90, 108, Math.PI + 0.22);
@@ -149,7 +149,7 @@
 
       ctx.translate(0, -232);
       ctx.rotate(
-        -0.2 + (motion.matches ? 0 : Math.sin(elapsed * 0.45 + 0.6) * 0.035),
+        -0.2 + (motion.matches ? 0 : Math.sin(elapsed * 0.45 + 0.6) * 0.025),
       );
       ctx.scale(1, 0.86);
       for (let ring = 0; ring < 2; ring++) {
@@ -211,11 +211,13 @@
           const tone =
             (data[i] * 0.2126 + data[i + 1] * 0.7152 + data[i + 2] * 0.0722) /
             255;
-          const coverage = (Math.min(0.95, tone * 1.35) * data[i + 3]) / 255;
+          const coverage =
+            (Math.min(0.95, tone * (cool ? 3.8 : 1.35)) * data[i + 3]) / 255;
           const threshold = (bayer[(y % 4) * 4 + (x % 4)] + 0.5) / 16;
-          data[i] = warm ? 218 : cool ? 79 : 232;
-          data[i + 1] = warm ? 180 : cool ? 87 : 232;
-          data[i + 2] = warm ? 127 : cool ? 127 : 232;
+          // Darker ink keeps the same dither readable against the light page.
+          data[i] = warm ? 151 : cool ? 12 : 48;
+          data[i + 1] = warm ? 109 : cool ? 22 : 48;
+          data[i + 2] = warm ? 49 : cool ? 32 : 48;
           data[i + 3] = coverage > threshold ? 255 : 0;
         }
       }
@@ -226,6 +228,21 @@
 
     function resize() {
       const bounds = container.getBoundingClientRect();
+      const sun = document
+        .querySelector(".corner-sun")
+        ?.getBoundingClientRect();
+      if (sun) {
+        towardSun = Math.max(
+          0.08,
+          Math.min(
+            0.42,
+            Math.atan2(
+              sun.x + sun.width / 2 - (bounds.x + bounds.width / 2),
+              bounds.bottom - (sun.y + sun.height / 2),
+            ),
+          ),
+        );
+      }
       width = bounds.width;
       height = bounds.height;
       const ratio = Math.min(devicePixelRatio || 1, 2);
@@ -240,7 +257,8 @@
       draw();
     }
     function tick(time: number) {
-      if (lastTime) elapsed += Math.min((time - lastTime) / 1000, 0.05);
+      const delta = lastTime ? Math.min((time - lastTime) / 1000, 0.05) : 0;
+      elapsed += delta;
       lastTime = time;
       if (time - lastDraw >= 1000 / 30) {
         draw();
@@ -265,6 +283,7 @@
     resizeObserver.observe(container);
     motion.addEventListener("change", updateMotion);
     document.addEventListener("visibilitychange", updateMotion);
+    window.addEventListener("resize", resize);
     resize();
     return () => {
       cancelAnimationFrame(animation);
@@ -272,6 +291,7 @@
       resizeObserver.disconnect();
       motion.removeEventListener("change", updateMotion);
       document.removeEventListener("visibilitychange", updateMotion);
+      window.removeEventListener("resize", resize);
     };
   }
   let dispose: (() => void) | undefined;
@@ -294,7 +314,7 @@
     margin-bottom: 34px;
     overflow: hidden;
     background: var(--paper);
-    transform: translateY(120px);
+    transform: translateY(80px);
     mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
   }
   canvas {

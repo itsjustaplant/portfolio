@@ -1,0 +1,124 @@
+<canvas class="corner-sun" aria-hidden="true"></canvas>
+
+<script>
+  function mountSun(canvas: HTMLCanvasElement) {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return () => {};
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const bayer = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+    const cell = 2.5;
+    let size = 0;
+    let elapsed = 0;
+    let lastTime = 0;
+    let lastDraw = 0;
+    let animation = 0;
+
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, size, size);
+      const center = size / 2;
+      const radius = size * 0.36;
+      const halo = size * 0.12;
+      const count = Math.ceil(size / cell);
+      for (let y = 0; y < count; y++) {
+        for (let x = 0; x < count; x++) {
+          const dx = x * cell + cell / 2 - center;
+          const dy = y * cell + cell / 2 - center;
+          const distance = Math.hypot(dx, dy);
+          const angle = Math.atan2(dy, dx);
+          // Slow surface currents and a breathing corona shift the ordered dots.
+          const edge =
+            radius * (1 + Math.sin(angle * 5 + elapsed * 0.3) * 0.012);
+          const current =
+            Math.sin(dx * 0.06 + elapsed * 0.45) *
+            Math.cos(dy * 0.055 - elapsed * 0.3);
+          const coverage =
+            distance < edge
+              ? 0.86 - (distance / edge) * 0.22 + current * 0.12
+              : Math.max(
+                  0,
+                  0.24 *
+                    (1 - (distance - edge) / halo) *
+                    (0.85 + Math.sin(angle * 7 - elapsed * 0.4) * 0.15),
+                );
+          if (coverage <= (bayer[(y % 4) * 4 + (x % 4)] + 0.5) / 16) continue;
+          ctx.fillStyle = distance < edge ? "#b88a43" : "#ceb282";
+          ctx.fillRect(x * cell, y * cell, cell * 0.8, cell * 0.8);
+        }
+      }
+    }
+
+    function resize() {
+      if (!ctx) return;
+      size = canvas.getBoundingClientRect().width;
+      const ratio = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(size * ratio);
+      canvas.height = Math.round(size * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      draw();
+    }
+
+    function tick(time: number) {
+      if (lastTime) elapsed += Math.min((time - lastTime) / 1000, 0.1);
+      lastTime = time;
+      if (time - lastDraw >= 1000 / 20) {
+        draw();
+        lastDraw = time;
+      }
+      animation = requestAnimationFrame(tick);
+    }
+
+    function updateMotion() {
+      cancelAnimationFrame(animation);
+      lastTime = 0;
+      lastDraw = 0;
+      if (!document.hidden && !motion.matches)
+        animation = requestAnimationFrame(tick);
+      else draw();
+    }
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(canvas);
+    motion.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateMotion);
+    resize();
+    updateMotion();
+    return () => {
+      cancelAnimationFrame(animation);
+      observer.disconnect();
+      motion.removeEventListener("change", updateMotion);
+      document.removeEventListener("visibilitychange", updateMotion);
+    };
+  }
+
+  let dispose: (() => void) | undefined;
+  function initSun() {
+    dispose?.();
+    const canvas = document.querySelector<HTMLCanvasElement>(".corner-sun");
+    dispose = canvas ? mountSun(canvas) : undefined;
+  }
+  document.addEventListener("astro:page-load", initSun);
+  document.addEventListener("astro:before-swap", () => {
+    dispose?.();
+    dispose = undefined;
+  });
+</script>
+
+<style>
+  .corner-sun {
+    position: fixed;
+    top: -150px;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    pointer-events: none;
+  }
+  @media (max-width: 600px) {
+    .corner-sun {
+      top: -110px;
+      right: -110px;
+      width: 220px;
+      height: 220px;
+    }
+  }
+</style>

@@ -34,7 +34,7 @@
             Math.cos(dy * 0.055 - elapsed * 0.3);
           const coverage =
             distance < edge
-              ? 0.86 - (distance / edge) * 0.22 + current * 0.12
+              ? 0.95 - (distance / edge) * 0.12 + current * 0.08
               : Math.max(
                   0,
                   0.24 *
@@ -42,8 +42,8 @@
                     (0.85 + Math.sin(angle * 7 - elapsed * 0.4) * 0.15),
                 );
           if (coverage <= (bayer[(y % 4) * 4 + (x % 4)] + 0.5) / 16) continue;
-          ctx.fillStyle = distance < edge ? "#d5ad12" : "#e7cf64";
-          ctx.fillRect(x * cell, y * cell, cell * 0.8, cell * 0.8);
+          ctx.fillStyle = "#f4c900";
+          ctx.fillRect(x * cell, y * cell, cell * 0.85, cell * 0.85);
         }
       }
     }

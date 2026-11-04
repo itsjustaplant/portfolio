@@ -16,6 +16,10 @@
     const output = outputContext,
       ctx = sceneContext;
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const textColor = getComputedStyle(container)
+      .color.match(/[\d.]+/g)
+      ?.slice(0, 3)
+      .map(Number) ?? [0, 0, 0];
     let towardSun = 0.25;
     const bayer = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
     const cell = 1.5;
@@ -212,12 +216,12 @@
             (data[i] * 0.2126 + data[i + 1] * 0.7152 + data[i + 2] * 0.0722) /
             255;
           const coverage =
-            (Math.min(0.95, tone * (cool ? 3.8 : 1.35)) * data[i + 3]) / 255;
+            (Math.min(0.95, tone * (cool ? 4.4 : 1.35)) * data[i + 3]) / 255;
           const threshold = (bayer[(y % 4) * 4 + (x % 4)] + 0.5) / 16;
-          // Darker ink keeps the same dither readable against the light page.
-          data[i] = warm ? 151 : cool ? 12 : 48;
-          data[i + 1] = warm ? 109 : cool ? 22 : 48;
-          data[i + 2] = warm ? 49 : cool ? 32 : 48;
+          // Foliage shares the page's text ink; petals retain their yellow.
+          data[i] = warm ? 213 : cool ? textColor[0] : 48;
+          data[i + 1] = warm ? 173 : cool ? textColor[1] : 48;
+          data[i + 2] = warm ? 18 : cool ? textColor[2] : 48;
           data[i + 3] = coverage > threshold ? 255 : 0;
         }
       }
@@ -311,11 +315,11 @@
   .sunflower {
     width: 100%;
     height: 340px;
-    margin-bottom: 34px;
+    margin-bottom: 40px;
     overflow: hidden;
     background: var(--paper);
     transform: translateY(80px);
-    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 65%, transparent 90%);
   }
   canvas {
     display: block;

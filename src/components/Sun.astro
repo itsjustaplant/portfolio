@@ -42,7 +42,7 @@
                     (0.85 + Math.sin(angle * 7 - elapsed * 0.4) * 0.15),
                 );
           if (coverage <= (bayer[(y % 4) * 4 + (x % 4)] + 0.5) / 16) continue;
-          ctx.fillStyle = distance < edge ? "#b88a43" : "#ceb282";
+          ctx.fillStyle = distance < edge ? "#d5ad12" : "#e7cf64";
           ctx.fillRect(x * cell, y * cell, cell * 0.8, cell * 0.8);
         }
       }
@@ -107,18 +107,18 @@
 <style>
   .corner-sun {
     position: fixed;
-    top: -150px;
-    right: -150px;
-    width: 300px;
-    height: 300px;
+    top: -200px;
+    right: -200px;
+    width: 400px;
+    height: 400px;
     pointer-events: none;
   }
   @media (max-width: 600px) {
     .corner-sun {
-      top: -110px;
-      right: -110px;
-      width: 220px;
-      height: 220px;
+      top: -140px;
+      right: -140px;
+      width: 280px;
+      height: 280px;
     }
   }
 </style>

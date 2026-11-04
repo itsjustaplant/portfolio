@@ -15,7 +15,6 @@
   --ink: #000000;
   --muted: #686868;
   --strong: #000000;
-  --line: #e4e4e4;
   --accent: #fb5ab2;
   --selection: #0000000d;
   color-scheme: light;
@@ -65,13 +64,6 @@ a:focus-visible {
 h1,
 p {
   margin: 0;
-}
-.intro h1 {
-  font-size: 14px;
-  line-height: 22px;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--muted);
 }
 .intro p {
   max-width: 100%;

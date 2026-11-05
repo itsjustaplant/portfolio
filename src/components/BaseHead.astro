@@ -22,17 +22,14 @@ const { title, description } = Astro.props;
   <link rel="icon" type="image/png" sizes="64x64" href="/sunflower.png" />
   <meta name="generator" content={Astro.generator} />
   <meta name="description" content={description} />
-  <meta
-    http-equiv="Content-Security-Policy"
-    content="font-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net"
-  />
+  <meta http-equiv="Content-Security-Policy" content="font-src 'self'" />
   <meta
     http-equiv="Content-Security-Policy"
     content="style-src 'self' 'unsafe-inline'"
   />
   <meta
     http-equiv="Content-Security-Policy"
-    content="script-src 'self' 'unsafe-inline' https://www.justaplant.dev https://cdnjs.cloudflare.com/ https://static.cloudflareinsights.com/"
+    content="script-src 'self' 'unsafe-inline'"
   />
   <meta http-equiv="Content-Security-Policy" content="object-src 'none'" />
   <link rel="sitemap" href="/sitemap-index.xml" />

@@ -10,3 +10,21 @@ import NowPlayingSection from "../sections/NowPlayingSection.astro";
   </div>
   <NowPlayingSection />
 </body>
+
+<script>
+  document.addEventListener("focusin", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const group = event.target.closest(".contact, .listening-room");
+    // Reveal focused links immediately without removing and restarting animations.
+    group?.getAnimations({ subtree: true }).forEach((animation) => {
+      if (
+        animation instanceof CSSAnimation &&
+        ["opening-reveal", "listening-island-in"].includes(
+          animation.animationName,
+        )
+      ) {
+        animation.finish();
+      }
+    });
+  });
+</script>

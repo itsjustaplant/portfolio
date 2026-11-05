@@ -155,9 +155,23 @@ p {
   .listening-room:focus-within {
     animation: none;
   }
+  .listening-room[data-exiting] {
+    animation: listening-island-out 300ms ease-in both;
+    pointer-events: none;
+  }
   .contact:focus-within h2,
   .contact:focus-within li {
     animation: none;
+  }
+}
+@keyframes listening-island-out {
+  from {
+    opacity: 1;
+    translate: 0 0;
+  }
+  to {
+    opacity: 0;
+    translate: 0 calc(100% + 32px + env(safe-area-inset-bottom));
   }
 }
 @keyframes listening-island-in {

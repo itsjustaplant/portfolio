@@ -95,23 +95,18 @@ p {
   list-style: none;
 }
 .text-link {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
-  transition: color 180ms ease;
-}
-.link-arrow {
-  color: var(--muted);
-  font-size: 12px;
-  transition: color 180ms ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
 }
 .text-link:hover,
 .text-link:focus-visible {
-  color: #f4c900;
-}
-.text-link:hover .link-arrow,
-.text-link:focus-visible .link-arrow {
-  color: #f4c900;
+  color: #806400;
+  text-decoration-color: currentColor;
 }
 .contact a {
   font-size: 14px;
@@ -119,7 +114,7 @@ p {
   color: var(--ink);
 }
 .contact a:hover {
-  color: #f4c900;
+  color: #806400;
 }
 @media (prefers-reduced-motion: no-preference) {
   .corner-sun {
@@ -178,8 +173,7 @@ p {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .text-link,
-  .link-arrow {
+  .text-link {
     transition: none;
   }
 }

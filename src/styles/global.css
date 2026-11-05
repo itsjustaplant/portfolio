@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/inter/InterVariable.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "iA Writer Quattro";
+  src: url("/fonts/ia-writer-quattro/latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -27,7 +27,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family:
-    "Inter",
+    "iA Writer Quattro",
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",

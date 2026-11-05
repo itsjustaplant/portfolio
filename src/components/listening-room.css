@@ -72,3 +72,98 @@
   min-width: 0;
   margin-top: 8px;
 }
+.record-equalizer {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .listening-room {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    flex-shrink: 0;
+    margin: 0 auto max(16px, env(safe-area-inset-bottom));
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+  .record-content {
+    grid-template-columns: 28px minmax(0, 1fr) 16px;
+    align-items: center;
+    gap: 10px;
+  }
+  .record-art {
+    grid-row: auto;
+    width: 28px;
+    height: 28px;
+  }
+  .record-info {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  .record-title {
+    flex: 0 1 auto;
+    max-width: 65%;
+    min-width: 0;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .record-artist {
+    flex: 1;
+    min-width: 0;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .record-artist::before {
+    content: "— ";
+  }
+  .record-progress {
+    display: none;
+  }
+  .record-equalizer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    height: 14px;
+    color: var(--accent);
+  }
+  .record-equalizer span {
+    width: 2px;
+    height: 100%;
+    background: currentColor;
+    border-radius: 1px;
+    transform-origin: bottom;
+    transform: scaleY(0.5);
+  }
+  .record-equalizer span:nth-child(2) {
+    transform: scaleY(0.9);
+    animation-delay: -0.3s;
+  }
+  .record-equalizer span:nth-child(3) {
+    transform: scaleY(0.65);
+    animation-delay: -0.6s;
+  }
+  .record-equalizer span:nth-child(4) {
+    transform: scaleY(0.35);
+    animation-delay: -0.15s;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .record-equalizer span {
+      animation-name: equalizer-bounce;
+      animation-duration: 850ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+}
+
+@keyframes equalizer-bounce {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

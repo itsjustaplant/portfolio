@@ -70,6 +70,12 @@ export default function NowPlaying() {
               end={track.timestamps.end}
             />
           </div>
+          <span className="record-equalizer" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </span>
         </div>
       </div>
     </footer>

@@ -204,6 +204,9 @@ p {
 }
 @media (max-width: 600px) {
   .site-shell {
-    margin-top: 32px;
+    margin-top: 24px;
+  }
+  body:has(.listening-room) .site-shell {
+    margin-bottom: 32px;
   }
 }

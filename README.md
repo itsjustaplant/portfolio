@@ -1,6 +1,6 @@
 # Portfolio
 
-Static Astro site with plain CSS. The hidden Spotify player is retained as a React component, using `use-lanyard` for live presence updates.
+Static Astro site with plain CSS. A compact floating footer uses React and `use-lanyard` to show live Spotify activity. It is hidden when nothing is playing.
 
 Requires Node.js 22.23.4 or newer. Use Node.js 24 LTS for local development.
 

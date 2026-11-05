@@ -91,17 +91,8 @@
     };
   }
 
-  let dispose: (() => void) | undefined;
-  function initSun() {
-    dispose?.();
-    const canvas = document.querySelector<HTMLCanvasElement>(".corner-sun");
-    dispose = canvas ? mountSun(canvas) : undefined;
-  }
-  document.addEventListener("astro:page-load", initSun);
-  document.addEventListener("astro:before-swap", () => {
-    dispose?.();
-    dispose = undefined;
-  });
+  const target = document.querySelector<HTMLCanvasElement>("canvas.corner-sun");
+  if (target) mountSun(target);
 </script>
 
 <style>

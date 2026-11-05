@@ -1,14 +1,12 @@
-# my website
+# Portfolio
 
-built with astro
-thx astro
+Static Astro site with plain CSS. The hidden Spotify player is retained as a React component, using `use-lanyard` for live presence updates.
 
-# todo
+Requires Node.js 22.23.4 or newer. Use Node.js 24 LTS for local development.
 
-[X] - move spotify api ?? moved to WS
-[?] - dockerize ?? we might need and api for letterboxd at initial render
-[X] - remove paragraph element
-[X] - use css variables ?? what about moving tailwind all css files are big mass right now :/
-[X] - move Now playing section into react
-[X] - tailwind
-[X] - use-landyard
+```sh
+npm ci
+npm run dev
+```
+
+Before committing, run `npm run check` and `npm run build`. Use `npm run preview` to inspect the production build.

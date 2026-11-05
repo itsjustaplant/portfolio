@@ -1,0 +1,27 @@
+.spotify-progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+.spotify-progress-track {
+  width: 100%;
+  height: 3px;
+  border-radius: 9999px;
+  background: #454540;
+}
+.spotify-progress-fill {
+  height: 3px;
+  border-radius: inherit;
+  background: #d4dbc8;
+}
+.spotify-progress-times {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 6px 0 1px;
+  color: #aaa99f;
+  font:
+    9px Consolas,
+    monospace;
+}

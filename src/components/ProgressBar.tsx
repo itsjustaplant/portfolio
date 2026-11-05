@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import "./ProgressBar.css";
 
 interface IProps {
   end: number;
@@ -21,7 +22,6 @@ const getProgress = (indicator: number, length: number): number => {
 
 const ProgressBar = (props: IProps) => {
   const { start, end } = props;
-  const interval = useRef<NodeJS.Timeout>();
 
   const [current, setCurrent] = useState(new Date().getTime());
 
@@ -33,11 +33,11 @@ const ProgressBar = (props: IProps) => {
   const percent = end ? getProgress(indicator, length) : 0;
 
   useEffect(() => {
-    interval.current = setInterval(() => {
+    const interval = setInterval(() => {
       const date = new Date();
       setCurrent(date.getTime());
     }, 1000);
-    return () => clearInterval(interval.current);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -58,14 +58,14 @@ const ProgressBar = (props: IProps) => {
   }, [end]);
 
   return (
-    <div className="flex flex-col justify-center gap-0.5">
-      <div className="w-full bg-primary rounded-full h-1.5">
+    <div className="spotify-progress">
+      <div className="spotify-progress-track">
         <div
-          className="bg-white h-1.5 rounded-full"
+          className="spotify-progress-fill"
           style={{ width: `${percent}%` }}
         ></div>
       </div>
-      <div className="flex flex-row justify-between text-primary text-xs w-full my-px">
+      <div className="spotify-progress-times">
         <span>{currentTimer}</span>
         <span>{endTimer}</span>
       </div>

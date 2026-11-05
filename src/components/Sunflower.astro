@@ -298,17 +298,8 @@
       window.removeEventListener("resize", resize);
     };
   }
-  let dispose: (() => void) | undefined;
-  function initSunflower() {
-    dispose?.();
-    const container = document.querySelector<HTMLElement>(".sunflower");
-    dispose = container ? mountSunflower(container) : undefined;
-  }
-  document.addEventListener("astro:page-load", initSunflower);
-  document.addEventListener("astro:before-swap", () => {
-    dispose?.();
-    dispose = undefined;
-  });
+  const target = document.querySelector<HTMLElement>(".sunflower");
+  if (target) mountSunflower(target);
 </script>
 
 <style>

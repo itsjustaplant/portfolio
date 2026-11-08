@@ -7,6 +7,10 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL("/social-preview.png", Astro.site);
+const socialImageAlt =
+  "A dithered yellow sunflower standing among grasses on a light background.";
 ---
 
 <head>
@@ -20,8 +24,32 @@ const { title, description } = Astro.props;
     crossorigin
   />
   <link rel="icon" type="image/png" sizes="64x64" href="/sunflower.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="theme-color" content="#fafafa" />
+  <meta name="application-name" content="justaplant" />
+  <meta name="apple-mobile-web-app-title" content="justaplant" />
   <meta name="generator" content={Astro.generator} />
   <meta name="description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="justaplant" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={socialImageURL} />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={socialImageAlt} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@justa_plant" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={socialImageURL} />
+  <meta name="twitter:image:alt" content={socialImageAlt} />
   <meta http-equiv="Content-Security-Policy" content="font-src 'self'" />
   <meta
     http-equiv="Content-Security-Policy"
